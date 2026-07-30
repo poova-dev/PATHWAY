@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Pathway Immigration | Guiding Futures</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #2EAF45 0%, #2B5CC5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .primary-gradient {
+            background: linear-gradient(180deg, #2EAF45 0%, #1e8a32 100%);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll 30s linear infinite;
+        }
+
+        .bento-card {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .bento-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .passport-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-12px) rotate(3deg);
+            }
+
+            50% {
+                transform: translateY(-6px) rotate(-2deg);
+            }
+
+            75% {
+                transform: translateY(-14px) rotate(1deg);
+            }
+        }
+
+        @keyframes float-delayed {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-8px) rotate(-3deg);
+            }
+
+            50% {
+                transform: translateY(-16px) rotate(2deg);
+            }
+
+            75% {
+                transform: translateY(-4px) rotate(-1deg);
+            }
+        }
+
+        @keyframes float-slow {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float-delayed 5s ease-in-out infinite;
+        }
+
+        .animate-float-slow {
+            animation: float-slow 6s ease-in-out infinite;
+        }
+
+        .country-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#67002b",
+                        "outline-variant": "#bdcab8",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffd9df",
+                        "surface": "#f4fcee",
+                        "on-secondary-container": "#002970",
+                        "secondary-fixed": "#dae2ff",
+                        "surface-container": "#e9f0e3",
+                        "on-primary-container": "#003a0d",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#63df6e",
+                        "primary": "#006e21",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#171d15",
+                        "on-primary-fixed": "#002105",
+                        "on-secondary-fixed": "#001848",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#63df6e",
+                        "outline": "#6e7b6b",
+                        "surface-dim": "#d5dcd0",
+                        "on-tertiary-fixed": "#3f0018",
+                        "on-primary-fixed-variant": "#005317",
+                        "tertiary-fixed-dim": "#ffb1c2",
+                        "inverse-surface": "#2b322a",
+                        "inverse-on-surface": "#ecf3e6",
+                        "surface-container-low": "#eef6e9",
+                        "on-surface": "#171d15",
+                        "surface-bright": "#f4fcee",
+                        "tertiary-container": "#fa6590",
+                        "surface-tint": "#006e21",
+                        "tertiary": "#ae2957",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#e3ebdd",
+                        "primary-container": "#2eaf45",
+                        "secondary-container": "#6792fd",
+                        "background": "#f4fcee",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#0040a2",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#dde5d8",
+                        "surface-variant": "#dde5d8",
+                        "primary-fixed": "#80fd87",
+                        "on-surface-variant": "#3e4a3c",
+                        "secondary-fixed-dim": "#b2c5ff",
+                        "secondary": "#2658c1",
+                        "on-tertiary-fixed-variant": "#8d0a40"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "24px": "24px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-caps": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background font-body-md text-on-surface overflow-x-hidden">
+    <!-- TopNavBar -->
+    <nav
+        class="bg-white/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm docked full-width top-0 sticky z-50">
+        <div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center"><span
+                        class="material-symbols-outlined text-white text-2xl"
+                        style="font-variation-settings: 'FILL' 1;">explore</span></div>
+                <span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Pathway
+                    Immigration</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="font-body-lg text-body-lg text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1"
+                    href="#">Study Abroad</a>
+                <a class="font-body-lg text-body-lg text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200"
+                    href="#">Work Visa</a>
+                <a class="font-body-lg text-body-lg text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200"
+                    href="#">PR Services</a>
+                <a class="font-body-lg text-body-lg text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200"
+                    href="#">Countries</a>
+                <a class="font-body-lg text-body-lg text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200"
+                    href="#">Resources</a>
+            </div>
+            <button
+                class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-bold hover:bg-secondary transition-all active:scale-95 duration-200">
+                Book Consultation
+            </button>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-32 overflow-hidden">
+        <div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="z-10">
+
+                <h1 class="font-display-lg text-display-lg lg:text-display-lg mb-6">
+                    Guiding Futures. <br>
+                    <span class="gradient-text">Inspiring Journeys.</span>
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mb-10">
+                    Your global education and career ambitions deserve a world-class roadmap. We simplify complex visa
+                    processes into seamless transitions.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button
+                        class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold flex items-center gap-2 primary-gradient shadow-lg">
+                        Start Your Application <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                    <button
+                        class="border-2 border-secondary text-secondary px-8 py-4 rounded-xl font-bold hover:bg-secondary/5 transition-colors">
+                        Explore Courses
+                    </button>
+                </div>
+                <!-- Trust Badges -->
+                <div class="mt-12 flex items-center gap-6">
+                    <div class="flex -space-x-3">
+                        <div class="w-12 h-12 rounded-full border-2 border-white bg-surface-container overflow-hidden">
+                            <img class="w-full h-full object-cover"
+                                data-alt="Close up portrait of a smiling Indian student wearing a casual hoodie, bright outdoor lighting, modern photography style."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQhzfL2iIsKy1x2390KcUZmCazO2GB4-DPJd8QRK36H2nUNoMzQ5W3aB34herRp3xhha5PV9au9rcxdNba0Zghhv9lpbY7wzDFQeze5hf8ck5mE8taioZgcLqzSUmQtU3xgDRaRubpOGp4HQi9clT9h-aoBr6at6uiThufnOiASWW1Ozzez0KvwwclOPNCLp5-7laMAleWHn7KUbntmxxRnz3_nxhpJTIUU27GcCil6gF2muL5Q8hK">
+                        </div>
+                        <div class="w-12 h-12 rounded-full border-2 border-white bg-surface-container overflow-hidden">
+                            <img class="w-full h-full object-cover"
+                                data-alt="Portrait of a professional young woman from Nigeria, business casual attire, soft bokeh library background, high-end photography."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOQ2aks2BMfhS1CWtgtiqhdqQuTbOwoQNoUhSgRuRMnu5HNlNEXMdB6tFzCNTl_d_ZMavWkgRzcGvSvtt9i5mpCq6I18Q3NZ7W07tMbQdz7muRgP_PclwXZLg2B1do6Vax4Y3sEwmHeNwfHfSCG4syRVbv9YpitsCKYHQTVsV-K9k0ImAkGCSaIuvi1mv-pErZkv3Mex2FGOi5nCk_EMKCVkzjxNa56HEOwfsT8hLULDIkKdILsam0">
+                        </div>
+                        <div class="w-12 h-12 rounded-full border-2 border-white bg-surface-container overflow-hidden">
+                            <img class="w-full h-full object-cover"
+                                data-alt="Close up shot of a diverse group of smiling international students, sun-drenched campus setting, vibrant color grading."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrFIdQU6RWIfgtqQFOf-UsXB2g5C0fTjh0FisbmJhJoisSgG5URnSbS_Rw1CMpfFN9VqO8UzIVjXZ8O0T_FKa5SnBpVnWYoFMxRkKlDyjj3SDlVAkXDK2uWLQ6nlwXAk23bgETVILGpff_afovvFmwvyx907n7lGeINSj2tt1fMDSXbwY9UZOoa66TyGzFNcyTwXsQJpnGN-AO5Y6xeFWcuw6KEBMggZUb8QZgo1mvLEOO47WXmkTd">
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-bold text-headline-md">4.9/5</p>
+                        <p class="text-sm text-on-surface-variant">Trusted by 10k+ Students</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+
+                <!-- Hero Image -->
+                <div class="relative rounded-24px overflow-hidden shadow-2xl">
+                    <img alt="Medical student studying abroad - Pathway Immigration"
+                        class="w-full h-[600px] object-cover"
+                        src="hero-student.png">
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Search Widget -->
+    <section class="relative -mt-16 z-30 px-margin-desktop">
+        <div
+            class="max-w-container-max mx-auto bg-white rounded-24px shadow-2xl p-8 border border-outline-variant/30 glass">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-end">
+                <div class="space-y-2">
+                    <label class="font-label-caps text-on-surface-variant">DESTINATION</label>
+                    <select
+                        class="w-full bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-secondary py-3">
+                        <option>Select Country</option>
+                        <option>Canada</option>
+                        <option>United Kingdom</option>
+                        <option>Australia</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label class="font-label-caps text-on-surface-variant">COURSE FIELD</label>
+                    <select
+                        class="w-full bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-secondary py-3">
+                        <option>IT &amp; Software</option>
+                        <option>Business Management</option>
+                        <option>Health Sciences</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label class="font-label-caps text-on-surface-variant">STUDY LEVEL</label>
+                    <select
+                        class="w-full bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-secondary py-3">
+                        <option>Master's</option>
+                        <option>Bachelor's</option>
+                        <option>Diploma</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between">
+                        <label class="font-label-caps text-on-surface-variant">BUDGET</label>
+                        <span class="text-xs font-bold text-primary" id="budget-val">$20k</span>
+                    </div>
+                    <input
+                        class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary"
+                        max="100" min="10"
+                        oninput="document.getElementById('budget-val').innerText = '$' + this.value + 'k'" type="range"
+                        value="20">
+                </div>
+                <button
+                    class="bg-primary text-on-primary py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-secondary transition-all">
+                    <span class="material-symbols-outlined">search</span> Search Opportunities
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Trust Stats Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <div>
+                <p class="text-5xl font-extrabold text-primary mb-2" id="stat1">1000+</p>
+                <p class="font-label-caps text-on-surface-variant tracking-widest">SUCCESSFUL STUDENTS</p>
+            </div>
+            <div>
+                <p class="text-5xl font-extrabold text-secondary mb-2" id="stat2">95%</p>
+                <p class="font-label-caps text-on-surface-variant tracking-widest">VISA SUCCESS RATE</p>
+            </div>
+            <div>
+                <p class="text-5xl font-extrabold text-primary mb-2" id="stat3">15+</p>
+                <p class="font-label-caps text-on-surface-variant tracking-widest">COUNTRIES COVERED</p>
+            </div>
+            <div>
+                <p class="text-5xl font-extrabold text-secondary mb-2" id="stat4">50+</p>
+                <p class="font-label-caps text-on-surface-variant tracking-widest">GLOBAL UNIVERSITIES</p>
+            </div>
+        </div>
+        <script>
+            function animateStats(id, end, suffix = "") {
+                let current = 0;
+                let step = end / 50;
+                let element = document.getElementById(id);
+                let timer = setInterval(() => {
+                    current += step;
+                    if (current >= end) {
+                        element.innerText = Math.floor(end) + suffix;
+                        clearInterval(timer);
+                    } else {
+                        element.innerText = Math.floor(current) + suffix;
+                    }
+                }, 40);
+            }
+            // Intersection observer to trigger animation
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animateStats('stat1', 1000, '+');
+                    animateStats('stat2', 95, '%');
+                    animateStats('stat3', 15, '+');
+                    animateStats('stat4', 50, '+');
+                    observer.disconnect();
+                }
+            });
+            observer.observe(document.getElementById('stat1'));
+        </script>
+    </section>
+    <!-- Photo Gallery with Airplane Theme -->
+    <section class="py-16 bg-white overflow-hidden">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="flex items-center justify-between mb-10">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+                    <h2 class="font-headline-md text-headline-md">Students Flying to Their Dreams</h2>
+                </div>
+                <div class="flex items-center gap-2 text-on-surface-variant">
+                    <span class="material-symbols-outlined text-sm">photo_library</span>
+                    <span class="text-sm font-bold">Gallery</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-4 gap-4 h-[320px]">
+                <div class="col-span-2 row-span-1 relative rounded-24px overflow-hidden group cursor-pointer">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQhzfL2iIsKy1x2390KcUZmCazO2GB4-DPJd8QRK36H2nUNoMzQ5W3aB34herRp3xhha5PV9au9rcxdNba0Zghhv9lpbY7wzDFQeze5hf8ck5mE8taioZgcLqzSUmQtU3xgDRaRubpOGp4HQi9clT9h-aoBr6at6uiThufnOiASWW1Ozzez0KvwwclOPNCLp5-7laMAleWHn7KUbntmxxRnz3_nxhpJTIUU27GcCil6gF2muL5Q8hK" alt="Student at airport" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 flex items-center gap-2 text-white">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">flight</span>
+                        <span class="font-bold text-sm">Ready for Takeoff</span>
+                    </div>
+                </div>
+                <div class="relative rounded-24px overflow-hidden group cursor-pointer">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOQ2aks2BMfhS1CWtgtiqhdqQuTbOwoQNoUhSgRuRMnu5HNlNEXMdB6tFzCNTl_d_ZMavWkgRzcGvSvtt9i5mpCq6I18Q3NZ7W07tMbQdz7muRgP_PclwXZLg2B1do6Vax4Y3sEwmHeNwfHfSCG4syRVbv9YpitsCKYHQTVsV-K9k0ImAkGCSaIuvi1mv-pErZkv3Mex2FGOi5nCk_EMKCVkzjxNa56HEOwfsT8hLULDIkKdILsam0" alt="Student studying" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div class="absolute bottom-3 left-3 flex items-center gap-1 text-white">
+                        <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">school</span>
+                        <span class="font-bold text-xs">Campus Life</span>
+                    </div>
+                </div>
+                <div class="relative rounded-24px overflow-hidden group cursor-pointer">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrFIdQU6RWIfgtqQFOf-UsXB2g5C0fTjh0FisbmJhJoisSgG5URnSbS_Rw1CMpfFN9VqO8UzIVjXZ8O0T_FKa5SnBpVnWYoFMxRkKlDyjj3SDlVAkXDK2uWLQ6nlwXAk23bgETVILGpff_afovvFmwvyx907n7lGeINSj2tt1fMDSXbwY9UZOoa66TyGzFNcyTwXsQJpnGN-AO5Y6xeFWcuw6KEBMggZUb8QZgo1mvLEOO47WXmkTd" alt="International students" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div class="absolute bottom-3 left-3 flex items-center gap-1 text-white">
+                        <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">diversity_3</span>
+                        <span class="font-bold text-xs">Global Friends</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Grid (Bento Style) -->
+    <section class="py-24 bg-surface-container-low">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="text-center mb-16">
+                <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-4">Our Core Expertise</h2>
+                <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">End-to-end support designed to remove
+                    hurdles and accelerate your international goals.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div
+                    class="bento-card bg-white p-8 rounded-24px shadow-sm border border-outline-variant/20 hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+                        <span class="material-symbols-outlined text-3xl">school</span>
+                    </div>
+                    <h3 class="font-headline-md mb-4">Study Abroad</h3>
+                    <p class="text-on-surface-variant mb-6">Comprehensive counseling to find the perfect university
+                        matching your career profile and budget.</p>
+                    <a class="text-primary font-bold flex items-center gap-2 group" href="#">Learn More <span
+                            class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span></a>
+                </div>
+                <!-- Service Card 2 -->
+                <div
+                    class="bento-card bg-white p-8 rounded-24px shadow-sm border border-outline-variant/20 hover:shadow-xl transition-all">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-6">
+                        <span class="material-symbols-outlined text-3xl">work</span>
+                    </div>
+                    <h3 class="font-headline-md mb-4">Work Visa</h3>
+                    <p class="text-on-surface-variant mb-6">Skilled worker permits and employer-sponsored visa
+                        assistance for global career moves.</p>
+                    <a class="text-secondary font-bold flex items-center gap-2 group" href="#">Learn More <span
+                            class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span></a>
+                </div>
+                <!-- Service Card 3 -->
+                <div
+                    class="bento-card bg-white p-8 rounded-24px shadow-sm border border-outline-variant/20 hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+                        <span class="material-symbols-outlined text-3xl">badge</span>
+                    </div>
+                    <h3 class="font-headline-md mb-4">PR Services</h3>
+                    <p class="text-on-surface-variant mb-6">Navigating permanent residency pathways through Express
+                        Entry, PNP, and regional programs.</p>
+                    <a class="text-primary font-bold flex items-center gap-2 group" href="#">Learn More <span
+                            class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span></a>
+                </div>
+                <!-- Service Card 4 -->
+                <div
+                    class="bento-card bg-white p-8 rounded-24px shadow-sm border border-outline-variant/20 hover:shadow-xl transition-all">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-6">
+                        <span class="material-symbols-outlined text-3xl">family_restroom</span>
+                    </div>
+                    <h3 class="font-headline-md mb-4">Visitor Visa</h3>
+                    <p class="text-on-surface-variant mb-6">Fast-track tourist and business visa applications with
+                        minimal documentation stress.</p>
+                    <a class="text-secondary font-bold flex items-center gap-2 group" href="#">Learn More <span
+                            class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span></a>
+                </div>
+                <!-- Service Card 5 -->
+                <div
+                    class="bento-card bg-white p-8 rounded-24px shadow-sm border border-outline-variant/20 hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+                        <span class="material-symbols-outlined text-3xl">translate</span>
+                    </div>
+                    <h3 class="font-headline-md mb-4">Language Training</h3>
+                    <p class="text-on-surface-variant mb-6">IELTS, TOEFL, and PTE coaching from certified experts to hit
+                        your required scores.</p>
+                    <a class="text-primary font-bold flex items-center gap-2 group" href="#">Learn More <span
+                            class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span></a>
+                </div>
+                <!-- Service Card 6 -->
+                <div
+                    class="bento-card bg-white p-8 rounded-24px shadow-sm border border-outline-variant/20 hover:shadow-xl transition-all">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-6">
+                        <span class="material-symbols-outlined text-3xl">trending_up</span>
+                    </div>
+                    <h3 class="font-headline-md mb-4">Career Guidance</h3>
+                    <p class="text-on-surface-variant mb-6">Mapping your education to high-demand global job markets for
+                        long-term ROI.</p>
+                    <a class="text-secondary font-bold flex items-center gap-2 group" href="#">Learn More <span
+                            class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Popular Countries -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="flex justify-between items-end mb-10">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+                        <span class="font-label-caps text-primary tracking-widest">WHERE WE SEND STUDENTS</span>
+                    </div>
+                    <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-4">Top Study Destinations</h2>
+                    <p class="font-body-lg text-on-surface-variant">Global opportunities at your fingertips.</p>
+                </div>
+                <div class="flex gap-4">
+                    <button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </button>
+                    <button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+            <!-- World Map with Flight Routes -->
+            <div class="relative mb-16 bg-surface-container-low rounded-24px p-8 overflow-hidden">
+                <svg viewBox="0 0 1200 500" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+                    <!-- World Map Outline (simplified continents) -->
+                    <g fill="#bdcab8" opacity="0.35">
+                        <!-- North America -->
+                        <path d="M150,120 Q180,80 250,90 Q300,70 340,100 Q360,120 350,150 Q330,180 300,200 Q280,220 250,210 Q220,230 200,220 Q170,200 160,170 Q140,150 150,120Z"/>
+                        <!-- South America -->
+                        <path d="M270,260 Q290,240 310,250 Q330,270 340,310 Q335,360 320,390 Q300,410 280,400 Q260,380 255,340 Q250,300 270,260Z"/>
+                        <!-- Europe -->
+                        <path d="M520,90 Q550,70 580,80 Q610,75 630,90 Q640,110 630,130 Q620,150 600,160 Q580,165 560,155 Q540,145 530,130 Q515,110 520,90Z"/>
+                        <!-- Africa -->
+                        <path d="M540,180 Q570,170 600,180 Q620,200 630,240 Q635,280 625,320 Q610,360 590,370 Q570,365 555,340 Q540,300 535,260 Q530,220 540,180Z"/>
+                        <!-- Asia -->
+                        <path d="M650,70 Q700,50 760,60 Q820,55 880,70 Q920,90 940,120 Q950,160 930,190 Q900,210 860,200 Q820,210 780,200 Q740,190 710,170 Q680,150 660,120 Q640,100 650,70Z"/>
+                        <!-- India -->
+                        <path d="M740,180 Q760,170 780,185 Q790,210 785,240 Q775,265 760,270 Q745,260 740,235 Q735,210 740,180Z"/>
+                        <!-- Australia -->
+                        <path d="M900,300 Q940,280 980,290 Q1010,310 1020,340 Q1010,370 990,380 Q960,385 930,375 Q910,360 900,340 Q895,320 900,300Z"/>
+                    </g>
+                    <!-- India marker (origin) -->
+                    <circle cx="760" cy="220" r="8" fill="#006e21" opacity="0.9">
+                        <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="760" cy="220" r="14" fill="none" stroke="#006e21" stroke-width="1.5" opacity="0.4">
+                        <animate attributeName="r" values="14;22;14" dur="2s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <text x="760" y="248" text-anchor="middle" fill="#006e21" font-size="11" font-weight="700" font-family="Manrope">INDIA</text>
+                    <!-- Flight Route: India → Canada -->
+                    <path d="M760,220 Q500,50 280,150" fill="none" stroke="#2EAF45" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="270" y="140" font-size="22" transform="rotate(-30, 270, 140)">✈</text>
+                    <circle cx="280" cy="150" r="5" fill="#2EAF45"/>
+                    <text x="280" y="172" text-anchor="middle" fill="#3e4a3c" font-size="10" font-weight="600" font-family="Manrope">Canada</text>
+                    <!-- Flight Route: India → UK -->
+                    <path d="M760,220 Q660,120 580,120" fill="none" stroke="#2658C1" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.5s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="570" y="110" font-size="20" transform="rotate(-15, 570, 110)">✈</text>
+                    <circle cx="580" cy="120" r="5" fill="#2658C1"/>
+                    <text x="580" y="142" text-anchor="middle" fill="#3e4a3c" font-size="10" font-weight="600" font-family="Manrope">UK</text>
+                    <!-- Flight Route: India → Germany -->
+                    <path d="M760,220 Q680,140 600,105" fill="none" stroke="#2EAF45" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.2s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="600" y="92" font-size="18" transform="rotate(-20, 600, 92)">✈</text>
+                    <circle cx="610" cy="100" r="4" fill="#2EAF45"/>
+                    <text x="610" y="88" text-anchor="middle" fill="#3e4a3c" font-size="10" font-weight="600" font-family="Manrope">Germany</text>
+                    <!-- Flight Route: India → Australia -->
+                    <path d="M760,220 Q850,280 950,330" fill="none" stroke="#2658C1" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.8s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="950" y="318" font-size="20" transform="rotate(25, 950, 318)">✈</text>
+                    <circle cx="960" cy="330" r="5" fill="#2658C1"/>
+                    <text x="960" y="355" text-anchor="middle" fill="#3e4a3c" font-size="10" font-weight="600" font-family="Manrope">Australia</text>
+                    <!-- Flight Route: India → Georgia -->
+                    <path d="M760,220 Q720,170 660,150" fill="none" stroke="#2EAF45" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1.8s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="655" y="140" font-size="16" transform="rotate(-10, 655, 140)">✈</text>
+                    <circle cx="660" cy="150" r="4" fill="#2EAF45"/>
+                    <text x="660" y="168" text-anchor="middle" fill="#3e4a3c" font-size="9" font-weight="600" font-family="Manrope">Georgia</text>
+                    <!-- Flight Route: India → Uzbekistan -->
+                    <path d="M760,220 Q740,160 700,130" fill="none" stroke="#2658C1" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1.6s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="695" y="120" font-size="16" transform="rotate(-15, 695, 120)">✈</text>
+                    <circle cx="700" cy="130" r="4" fill="#2658C1"/>
+                    <text x="700" y="120" text-anchor="middle" fill="#3e4a3c" font-size="9" font-weight="600" font-family="Manrope">Uzbekistan</text>
+                    <!-- Flight Route: India → Ireland -->
+                    <path d="M760,220 Q650,130 540,110" fill="none" stroke="#2EAF45" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.4s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="535" y="98" font-size="16" transform="rotate(-10, 535, 98)">✈</text>
+                    <circle cx="540" cy="110" r="4" fill="#2EAF45"/>
+                    <text x="540" y="105" text-anchor="middle" fill="#3e4a3c" font-size="9" font-weight="600" font-family="Manrope">Ireland</text>
+                    <!-- Flight Route: India → Poland -->
+                    <path d="M760,220 Q690,140 620,105" fill="none" stroke="#2658C1" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2s" repeatCount="indefinite"/>
+                    </path>
+                    <circle cx="625" cy="100" r="3" fill="#2658C1"/>
+                    <text x="635" y="96" fill="#3e4a3c" font-size="9" font-weight="600" font-family="Manrope">Poland</text>
+                    <!-- Legend -->
+                    <g transform="translate(30, 430)">
+                        <rect x="0" y="0" width="180" height="45" rx="12" fill="white" stroke="#bdcab8" stroke-width="1" opacity="0.9"/>
+                        <circle cx="20" cy="15" r="4" fill="#006e21"/>
+                        <text x="30" y="19" fill="#3e4a3c" font-size="10" font-family="Manrope">Origin (India)</text>
+                        <line x1="100" y1="15" x2="130" y2="15" stroke="#2EAF45" stroke-width="1.5" stroke-dasharray="4 3"/>
+                        <text x="12" y="37" fill="#3e4a3c" font-size="9" font-family="Manrope">✈ Active Flight Routes</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Country Card Canada -->
+                <div class="group relative h-[450px] rounded-24px overflow-hidden cursor-pointer">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                        data-alt="Stunning aerial view of downtown Toronto with the CN Tower, sunset sky with orange and purple hues, high-end travel photography, sharp focus."
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2JCVLRnwP5HUQobX9G9U_V6BPPERcq2EWQBvEXd2voz-J9DkrqV8cBOFEd8-wHV2DUux7BH2VJyOiKw1MqDomgcsZJL7JwACyYyuJG-r5UDMVHRFFsjvk5MJpKIW2F-s_SkZe2qMDoIRZi68ZBubc1mv6ep1Z6kAshW2JeeAxfVfq-ZBk8TGHA8cPYINBiw55UrTDVn2iAfwwCavF0yZkMkCxWrMVp3u6WwOV2AbwXB6odUsKdS_Y')">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 p-8 w-full">
+                        <h3 class="text-white font-display-lg-mobile mb-2">Canada</h3>
+                        <div
+                            class="space-y-2 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                            <p class="text-white/80 text-sm flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-xs">payments</span> Fees: $15k - $30k/yr</p>
+                            <p class="text-white/80 text-sm flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-xs">timer</span> Duration: 1 - 4 Years</p>
+                            <p class="text-white/80 text-sm flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-xs">work</span> 3 Yr Post-Study Work</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Country Card UK -->
+                <div class="group relative h-[450px] rounded-24px overflow-hidden cursor-pointer">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                        data-alt="Cinematic wide shot of the Houses of Parliament and Big Ben in London, moody overcast sky, reflective Thames river, elegant architectural detail."
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC8ym4f-tjbZF431A1zOsp1Uzh7j6JD-koHwFuISEXqcbidzL_dIET1caQZfmd_RnwibeOCehqrEG5JZmmsXAb7_yP7dy4ixpEy_Bj2bkDzNc0de2dVxN3EDm8VWRLSjXxzATYn4w2FS0ENqDwgyKJA8lg39-KjGK0KrakhpunGpUY0LIKxHBfXx5mrdZBxlFYH-_YP1RHYIOLa9uN8qWfwqwHe6Hi93F2NV_cEkbKh2PI3lsIJyU6i')">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 p-8 w-full">
+                        <h3 class="text-white font-display-lg-mobile mb-2">United Kingdom</h3>
+                        <div
+                            class="space-y-2 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                            <p class="text-white/80 text-sm flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-xs">payments</span> Fees: £12k - £25k/yr</p>
+                            <p class="text-white/80 text-sm flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-xs">timer</span> Duration: 1 - 3 Years</p>
+                            <p class="text-white/80 text-sm flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-xs">school</span> Top Global Universities</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Country Card Germany -->
+                <div class="group relative h-[450px] rounded-24px overflow-hidden cursor-pointer">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                        data-alt="Panoramic view of Berlin city skyline with the TV Tower, modern glass buildings, clean urban aesthetic, bright daylight, professional architectural photography."
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtglLFeLlI8R4694XT9PofTbg7cs__asjUXSU-9vz-tdRraZ_W2aFM6EJ2rkTb4vg9ima75OyDJBAagjEssiu5p9ivhSi_69M3SQmTuWIEi-PZpdYUlQk_ZDY9q4vYFMqAUCjRSFPQ3eI3wAQx3IlB3vDnHK4CrlqgzdFo0KcypwpxP4CjCVX-8gfLpEPVFgjx16Cy3A3O571SQiAJt1Z7WHgOuvFxTstIChoMWWYj0lWE47tixqaj')">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 p-8 w-full">
+                        <h3 class="text-white font-display-lg-mobile mb-2">Germany</h3>
+                        <div
+                            class="space-y-2 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                            <p class="text-white/80 text-sm flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-xs">payments</span> Fees: Low to None</p>
+                            <p class="text-white/80 text-sm flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-xs">timer</span> Duration: 2 - 3.5 Years</p>
+                            <p class="text-white/80 text-sm flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-xs">bolt</span> Engineering Powerhouse</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Country Card Australia -->
+                <div class="group relative h-[450px] rounded-24px overflow-hidden cursor-pointer">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                        data-alt="Iconic view of the Sydney Opera House and Harbour Bridge, crystal clear blue water, sunny day, vibrant coastal atmosphere, high-definition digital photography."
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5xtbw9OtCRtxbn0heQ19KoGGQ4E8sRbhNwWJuRzuzRDbA53-wSymC3YKrlfmrEH3BkcFFwE4K1gnJGo-ZDEVyXYN6dvjXUcagnTyJ1mU2p7NdSf3yBmJYnm1ORt4eB306IlgBVu0GHF3vnAMZBaA64UVAloL10MEwQ1quN0Aim402IAqfmRY53bTsMTe3YqYtoreeZ4vVfhntW2U1BqJMuT_1Vfs4PZq7T-1jYS_ttj1gjJ8hXNN9')">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 p-8 w-full">
+                        <h3 class="text-white font-display-lg-mobile mb-2">Australia</h3>
+                        <div
+                            class="space-y-2 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                            <p class="text-white/80 text-sm flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-xs">payments</span> Fees: $20k - $45k/yr</p>
+                            <p class="text-white/80 text-sm flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-xs">timer</span> Duration: 1.5 - 4 Years</p>
+                            <p class="text-white/80 text-sm flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-xs">wb_sunny</span> Exceptional Lifestyle</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- More countries list style for remaining 4 -->
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div
+                    class="flex items-center gap-4 p-4 bg-surface-container rounded-2xl hover:shadow-md transition-all cursor-pointer group">
+                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center"><span
+                            class="material-symbols-outlined text-primary country-icon">castle</span></div>
+                    <span class="font-bold">Georgia</span>
+                    <span class="material-symbols-outlined text-primary/40 ml-auto text-sm group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+                </div>
+                <div
+                    class="flex items-center gap-4 p-4 bg-surface-container rounded-2xl hover:shadow-md transition-all cursor-pointer group">
+                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center"><span
+                            class="material-symbols-outlined text-secondary country-icon">account_balance</span></div>
+                    <span class="font-bold">Poland</span>
+                    <span class="material-symbols-outlined text-secondary/40 ml-auto text-sm group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+                </div>
+                <div
+                    class="flex items-center gap-4 p-4 bg-surface-container rounded-2xl hover:shadow-md transition-all cursor-pointer group">
+                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center"><span
+                            class="material-symbols-outlined text-primary country-icon">mosque</span></div>
+                    <span class="font-bold">Uzbekistan</span>
+                    <span class="material-symbols-outlined text-primary/40 ml-auto text-sm group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+                </div>
+                <div
+                    class="flex items-center gap-4 p-4 bg-surface-container rounded-2xl hover:shadow-md transition-all cursor-pointer group">
+                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center"><span
+                            class="material-symbols-outlined text-secondary country-icon">local_library</span></div>
+                    <span class="font-bold">Ireland</span>
+                    <span class="material-symbols-outlined text-secondary/40 ml-auto text-sm group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- University Partners Scroll -->
+    <section class="py-12 bg-surface-container-highest overflow-hidden">
+        <div class="animate-scroll">
+            <!-- Repeated logos for infinite loop -->
+            <div class="flex items-center gap-24 px-12 opacity-50 grayscale hover:grayscale-0 transition-all">
+                <img class="h-12 w-auto"
+                    data-alt="Minimalist logo of a prestigious university, clean typography, professional corporate brand style, black on transparent."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW2UN3_JnavNeEdaAJZv2ISdq2JC3MTiUVxv8hFAtYe0A8kSa09zI8fi8vkA1o92T3VaXg5aZ0GdjNifEj31XUHpB59dywWyE2v_pMS112Z-WEaMgUZ_nMdk8V7jyLvtVaZNOpYt-UAzXoSoQ1wt1RiFXSwbFMbiXKrzkmAMEPTc-oMv4ZyQc4_QBF3jekJFKhtJOWzxfnT7e_PI_vG4RteRtKa8LFd91bTozMbtcMNIV1dGkm9S1X">
+                <img class="h-12 w-auto"
+                    data-alt="Sophisticated academic crest logo, heraldic elements, vector style, clean lines, professional branding."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAldo9bzb78eukKQU6x4v8AuBdTduZX9K0BQs27v8NKG8UH58g0RwCXTjilj5zAvv1qSIexd82bQUYbp2lI082k6hzL_oroi_AaXVbfmXKeXbBJbCrKtGQGXHMgbIUnWKO4mzhHE8aFK0DqqcstO2i9H5nJO3GQSCJym15e6n0Rfc99ikO1y4uljmBWY5AqctUr6Z4gOpgHE_hphGvSawqihcuQlB5KGn5ayx7O0PAjvoHl1ZbDzQn7">
+                <img class="h-12 w-auto"
+                    data-alt="Modern university wordmark, sans-serif font, geometric shapes, tech-forward education branding."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAARjjCEYXdrEbBQzmflytg5-TCE-jLud07khTuhYF6HPtxDr9ijCmEGvDAP0oy1cxp6Uv38vVa15T5bc-KyntLkToBO609zJii9mTXNgWyzXMH5dJ8C4LXs4VAs_D-AxJjIAWg_hkvs2LCW3lSXW6QQAhyG19fs6__AkccLxPZ682a2n6YxpkoVH8cEhKykWLlehSLZyLCAfk2QYcHdNjKO8qnJ9Dd_bpPiFutkUYSahqJ-7Y8u0hj">
+                <img class="h-12 w-auto"
+                    data-alt="Classic ivy league style seal logo, circular emblem, detailed engraving style, professional academic design."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsi4ZLbpLKUEqjdATKkKEp8tjtpb0sQaMZa79HG7rSYGF6oyHSeoz8JDtDFBBHHAOKO7zozGghPdqXnho-SnfHP4OGhljObwCDetliPk-py_FAkCIicXGZ8l8-gC9Qphh6fkDiWibsZLovwZn5Powmj3zJzAXCgOxueFMFmnV2BPhr_530qvjhy4UIOR6zYz-0GuCY9dRHZ7Z8dTEXO4o2g1tMvWWS-RPdh0swnQ6Y1PeBzSoR7Vo4">
+                <img class="h-12 w-auto"
+                    data-alt="Contemporary college logo, abstract symbol and text, minimalist aesthetic, vector graphics."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg1lizOzTQZTS1hc6AXS5QsWA9SWYiKGGeCDwCwgF4F9Mk_DSIUc5vnqBmuS5MCMas2zW-7EXOIDRvr9tOONJNwAvrZv48We-5j2QG5TJS1RuWKnWlPt-h8lDgjXPUMil0pQ_pf6OSmkn2NHdEptz0y9cKC017vRffuYOB1TCrnrK7831OpxV9uHVZeDdbf5vT09ztQER0l6n5qepoOTSi2TxduS35FGz8Lkajcn_SlstL9FASsLLK">
+                <img class="h-12 w-auto"
+                    data-alt="Renowned international institute logo, bold typography, distinctive color palette, high-end branding."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMZ1k-awGZ5Q-SS-gLZNYS73gG7CD6kYViGaUo06rMMN_hp5zNFhgdcL8GJxuPmF3ti-vsszWsBLbYDwDZ7U3qXDoKN7B_K1H6gNSmZ2p4VqcHXD24J0NS6hEOIQcN45RIU72od6OJNzogIRooPv20snTTW9yXxK8XDEDouWJALKhglNPlN4EKDcvwqvPkcC7XJD2ID1POpRh5ZDmtfHO9h6-lpv1prdRzaDNfdLoav8LpJu2gKmwD">
+            </div>
+            <!-- Repeat -->
+            <div class="flex items-center gap-24 px-12 opacity-50 grayscale hover:grayscale-0 transition-all">
+                <img class="h-12 w-auto"
+                    data-alt="Minimalist logo of a prestigious university, clean typography, professional corporate brand style, black on transparent."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL6hPL0q0GOckZ3TO0xBXZQh9HJ7q8EUh-eJm3vAgNiJRG9GCJPW6TW08p2Z8j17Z0fqGftJ9aXpDkDSofwkcjNlwvK18r5vIoKpjB6DEM0xWUc7TQCVhCCUdpdUP5U6SFEn3rloC8pCLJDZ_px9ayaEOnoVr6Cq9p7izs4LafI51C1LeDfQC5bGhojXi_Gj9RwMc5m5GlWsElS8EvOcOK_DKQJ_a8VQElzUR0XRKu3ckOFOLboyCj">
+                <img class="h-12 w-auto"
+                    data-alt="Sophisticated academic crest logo, heraldic elements, vector style, clean lines, professional branding."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz6s3Ey8Rpw6hFsaNZC0NG7dFBkPWeE9G-aqFKe0nD1B89yNh_eDJywoquz5sh6vaQ28WQaBaux96qreJfUwiwCoIL1auhrnQnRfmyTkXtRE5qxYvuILUrGqJ2LcWYDAzNM_lgj-a_mGnpnrOj7NL1NSXUR3VCskLna1tspUTkLftFFTjYUtbrN_LO0YiSro1PoDJ8Eb5evkvQ-jKzMK6WluUhC76GT4EM3_jn7UGmHEP2iTy_OB0K">
+                <img class="h-12 w-auto"
+                    data-alt="Modern university wordmark, sans-serif font, geometric shapes, tech-forward education branding."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd2bMSc3o3MyKwuTtiSr077apt0vNoqYclUpJirJclPm5R97OqeDHzCE4P4G1FduiTDC40m95tmGvwfRbh3zZ_FDFtHl6gY3j9YnzhUAX5xqkyfKKg1twlRErlTPWAwn_LQTnUkyC9ss6wb6c9o06nvQVFnUtwMsdgN0de4zho2ll4nxGcsdKkvZjXviTKAIHnc7YYaWgKJTIEu75qgqf51tIKh0NZvf7vFfwKtpiIuGe8kANUtHBg">
+                <img class="h-12 w-auto"
+                    data-alt="Classic ivy league style seal logo, circular emblem, detailed engraving style, professional academic design."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCW-Gft49Rh4S-z7myHdhdOoOBKAQH95Wv1WeG3-go7q1JCfj8T1GLIXSPVo62jgJQR04zp5PcTwtn-1NUNlupEGrx7i2xLpa9thz_3oMrcIbkwILBDUBq6Qyh9ZYUucTkgG_pWu-KnDPURHM99j6lSD-Qlj4kLFcIQaNMb3swYKYxlPnoD8C3lX4wkkGA36jR_nscbMNceDcnvvROdPVs-no3wdowlCbCfMyd_ye1tmHzdZ0i33W6">
+                <img class="h-12 w-auto"
+                    data-alt="Contemporary college logo, abstract symbol and text, minimalist aesthetic, vector graphics."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDQDlFSthhL-huiuft-YfWx9naD-u6FZpxT1RY-KBWX7c3FADlmwyd0mU9uu_CZWODqoTYxJA2OZ1st-yfFliSz3cG5_eJ1ycp98_7eLQT0PunV-6Kz-9bbDRlSwcjB8JHpoZmuD3UZqX2Bo-iZN2ycG_nD5Bw9HTs-StPWuYzMg4QdQ-Hsua4qtphnO8eahv8JxHv3FgVpTW8vrDZFqO_kuWx0PXHhALBhmqlXBMtr5I6pODu3t74">
+                <img class="h-12 w-auto"
+                    data-alt="Renowned international institute logo, bold typography, distinctive color palette, high-end branding."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGP2deAEutBggyjZK5Qee_qqJHiWh_Q_aNc5UnY3PWK7nr8NTV1lsOl-7v1EgmX1E9d0ZrPPtUWnfYe729bUXPKxSnUbrPtYyJyAiO-DXJeqBNy9rU7MxY44tu7En21AIzvn6kkhHmx13OslpQNhRvp2LH5fu3oMdC54oE0HC7Mhjb5JkJo-qabk583Fgh_IEAKpM7-iT-COIno30Wei25_c9z7s3r_WOMrdMbZcBXwDBR-vTb5lxL">
+            </div>
+        </div>
+    </section>
+    <!-- Success Stories -->
+    <section class="py-24 bg-surface-container-low">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <h2 class="font-display-lg text-center mb-16">The Wall of <span class="gradient-text">Dreams</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Passport Card 1 -->
+                <div class="bg-white p-6 rounded-24px passport-shadow relative overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold border border-primary/20">
+                        VISA APPROVED
+                    </div>
+                    <div class="flex gap-4 mb-6">
+                        <div class="w-20 h-24 rounded-lg bg-surface-container overflow-hidden">
+                            <img class="w-full h-full object-cover"
+                                data-alt="Professional studio portrait of a male student, dark blue background, looking confident, ID photo style but high quality."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_S1dZE8sNUuckf_6C4TGuVkIofw34Pu7wTIRHXmjJnxd3BY9sEms4bFuq_of7MK25nj5ao_RspSaxbIyT4M5G5XhQ9_Prk0RNLMyNvoUSmWAlAekyg3zYYAghzCua38Gk9XhjE8PjzFfZ7ghjwIDsmnPicEn0yLMUmVH1hAjCnu4lLSeuwT4w1FjcwKtRzm2vtI_aCjZH0b28qRpDdekPdswAeueRwaPDbSUhHuOEI-6qNFBLXYAa">
+                        </div>
+                        <div class="space-y-1 pt-2">
+                            <h4 class="font-bold">Rahul Sharma</h4>
+                            <p class="text-xs text-on-surface-variant">Destination: Canada</p>
+                            <p class="text-xs text-on-surface-variant">Course: M.Eng in Data Science</p>
+                        </div>
+                    </div>
+                    <p class="text-sm italic text-on-surface-variant">"Pathway made my Canadian dream a reality. Their
+                        documentation support was impeccable and stress-free."</p>
+                </div>
+                <!-- Passport Card 2 -->
+                <div class="bg-white p-6 rounded-24px passport-shadow relative overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold border border-primary/20">
+                        VISA APPROVED
+                    </div>
+                    <div class="flex gap-4 mb-6">
+                        <div class="w-20 h-24 rounded-lg bg-surface-container overflow-hidden">
+                            <img class="w-full h-full object-cover"
+                                data-alt="Close up portrait of a female student, natural soft lighting, neutral background, passport style professional headshot."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKoweCFO3KzKLuSlVYFrb3X0gqQf0zKCmYjxLKgiNkdlNpF5eX0P6mnyRtkaI6KDEQF1EHJF3D8D5aZg3RueN3CnnJv75gEvIMNtQlHegWB32Ct8vubZHc3FcoN9-oCmc-1-rXqtlM1B2zEKF4IsiKjQJvQx5Oenn7wbe4N7o1tK-OdLoAbBxKrfvjyK_Qmm1sFzRMMe9zGuCzjDSZibDLB9TMzNTVhNVgm-Eie7bvviQv2JNt4HiK">
+                        </div>
+                        <div class="space-y-1 pt-2">
+                            <h4 class="font-bold">Amara Okafor</h4>
+                            <p class="text-xs text-on-surface-variant">Destination: UK</p>
+                            <p class="text-xs text-on-surface-variant">Course: MSc Public Health</p>
+                        </div>
+                    </div>
+                    <p class="text-sm italic text-on-surface-variant">"The counseling session gave me the clarity I
+                        needed. I'm now studying at my dream university in London!"</p>
+                </div>
+                <!-- Passport Card 3 -->
+                <div class="bg-white p-6 rounded-24px passport-shadow relative overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold border border-primary/20">
+                        VISA APPROVED
+                    </div>
+                    <div class="flex gap-4 mb-6">
+                        <div class="w-20 h-24 rounded-lg bg-surface-container overflow-hidden">
+                            <img class="w-full h-full object-cover"
+                                data-alt="Portrait of a young male student wearing glasses, slight smile, warm lighting, professional headshot for immigration documents."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx_Zko8xI10o5ePG9-gDJOfLMXPcPSCU2xxzMuhlUyfTdVoRQyiomsPeNQM-tt1vx--dnf0bGsTrhsDh3uUP5VpzyYdLL7yut37IPhoXyiPsHSRbDby3ciuTEhkGeqcbcfXzAp7JGHzAKbVO_KlkvR0ZfktDKcHxLULArHalCclToGmFrGNrASc2SO5_nDN_fY-pHEyqMFuPyM3peMM-D6fkOnUuQizY1ChZKCQ8mz7n8vRdBAHGCL">
+                        </div>
+                        <div class="space-y-1 pt-2">
+                            <h4 class="font-bold">Chen Wei</h4>
+                            <p class="text-xs text-on-surface-variant">Destination: Australia</p>
+                            <p class="text-xs text-on-surface-variant">Course: Bachelor of IT</p>
+                        </div>
+                    </div>
+                    <p class="text-sm italic text-on-surface-variant">"Fast, transparent, and professional. The team at
+                        Pathway are true experts in Australian immigration."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose Us / Process Timeline -->
+    <section class="py-24 bg-white">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                <div>
+                    <h2 class="font-display-lg mb-8">Why Thousands Trust <span class="gradient-text">Pathway</span></h2>
+                    <div class="space-y-8 relative">
+                        <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-surface-container-highest"></div>
+                        <div class="relative pl-12">
+                            <div
+                                class="absolute left-0 top-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                                1</div>
+                            <h4 class="font-bold text-lg mb-2">Certified Global Consultants</h4>
+                            <p class="text-on-surface-variant">Our advisors are certified by ICEF, PIER, and CCG,
+                                ensuring you get the most accurate and up-to-date guidance.</p>
+                        </div>
+                        <div class="relative pl-12">
+                            <div
+                                class="absolute left-0 top-0 w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold">
+                                2</div>
+                            <h4 class="font-bold text-lg mb-2">Transparent Digital Process</h4>
+                            <p class="text-on-surface-variant">Track your application status in real-time through our
+                                portal. No hidden fees, no dark corners.</p>
+                        </div>
+                        <div class="relative pl-12">
+                            <div
+                                class="absolute left-0 top-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                                3</div>
+                            <h4 class="font-bold text-lg mb-2">High-Velocity Admissions</h4>
+                            <p class="text-on-surface-variant">Our direct partnerships with 50+ universities mean faster
+                                offer letters and simplified enrollment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface-container rounded-24px p-10">
+                    <h3 class="font-headline-md mb-8">Simplified 5-Step Journey</h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4 items-start">
+                            <span class="material-symbols-outlined text-primary">chat_bubble</span>
+                            <div>
+                                <p class="font-bold">Consultation</p>
+                                <p class="text-sm text-on-surface-variant">Free profile assessment and destination
+                                    matching.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <span class="material-symbols-outlined text-primary">description</span>
+                            <div>
+                                <p class="font-bold">Documentation</p>
+                                <p class="text-sm text-on-surface-variant">Expert guidance on SOPs, LORs, and financial
+                                    proof.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <span class="material-symbols-outlined text-primary">send</span>
+                            <div>
+                                <p class="font-bold">Application</p>
+                                <p class="text-sm text-on-surface-variant">Submission to universities and scholarship
+                                    tracking.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <span class="material-symbols-outlined text-primary">verified_user</span>
+                            <div>
+                                <p class="font-bold">Visa Processing</p>
+                                <p class="text-sm text-on-surface-variant">Intensive interview prep and file submission.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <span class="material-symbols-outlined text-primary">flight</span>
+                            <div>
+                                <p class="font-bold">Departure</p>
+                                <p class="text-sm text-on-surface-variant">Pre-departure briefing and on-arrival
+                                    support.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full mt-10 primary-gradient text-on-primary py-4 rounded-xl font-bold">Get Started
+                        Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Final CTA -->
+    <section class="py-24 px-margin-desktop">
+        <div
+            class="max-w-container-max mx-auto relative rounded-24px overflow-hidden bg-inverse-surface p-12 lg:p-24 text-center">
+
+            <div class="relative z-10">
+                <h2 class="font-display-lg text-white mb-6">Ready to Cross the Border?</h2>
+                <p class="text-white/70 font-body-lg max-w-2xl mx-auto mb-12">Don't leave your future to chance. Book a
+                    free 1-on-1 session with our senior immigration experts today.</p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <button
+                        class="bg-primary text-on-primary px-10 py-5 rounded-xl font-bold text-lg hover:scale-105 transition-transform">Book
+                        Free Consultation</button>
+                    <button
+                        class="bg-white/10 backdrop-blur text-white border border-white/20 px-10 py-5 rounded-xl font-bold text-lg hover:bg-white/20">Talk
+                        to Student Ambassador</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-surface-container-highest dark:bg-inverse-surface full-width">
+        <div
+            class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center"><span
+                            class="material-symbols-outlined text-white text-lg"
+                            style="font-variation-settings: 'FILL' 1;">explore</span></div>
+                    <span
+                        class="font-headline-md text-headline-md font-bold text-on-surface dark:text-inverse-on-surface">Pathway</span>
+                </div>
+                <p class="text-on-surface-variant dark:text-surface-variant mb-6">Your premier partner for international
+                    education and global mobility since 2010.</p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all"
+                        href="#"><span class="material-symbols-outlined">share</span></a>
+                    <a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all"
+                        href="#"><span class="material-symbols-outlined">public</span></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Services</h4>
+                <ul class="space-y-4 text-on-surface-variant dark:text-surface-variant">
+                    <li class=""><a class="hover:text-primary transition-colors" href="#">Study in Canada</a></li>
+                    <li class=""><a class="hover:text-primary transition-colors" href="#">Australia PR</a></li>
+                    <li class=""><a class="hover:text-primary transition-colors" href="#">UK Student Visa</a></li>
+                    <li class=""><a class="hover:text-primary transition-colors" href="#">Europe Job Seeker</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-4 text-on-surface-variant dark:text-surface-variant">
+                    <li class=""><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+                    <li class=""><a class="hover:text-primary transition-colors" href="#">Success Stories</a></li>
+                    <li class=""><a class="hover:text-primary transition-colors" href="#">Blog &amp; News</a></li>
+                    <li class=""><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Connect</h4>
+                <ul class="space-y-4 text-on-surface-variant dark:text-surface-variant">
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">call</span>
+                        +1 (800) PATHWAY</li>
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">mail</span>
+                        info@pathwayimmig.com</li>
+                    <li class="flex items-center gap-3"><span
+                            class="material-symbols-outlined text-primary">location_on</span> 500 Global Tower, Suite
+                        400</li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="border-t border-outline-variant/30 py-8 px-margin-desktop max-w-container-max mx-auto flex flex-col md:row items-center justify-between gap-4">
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant">© 2024 Pathway
+                Immigration. All rights reserved.</p>
+            <div class="flex gap-6 text-sm text-on-surface-variant dark:text-surface-variant">
+                <a href="#" class="">Privacy Policy</a>
+                <a href="#" class="">Terms of Service</a>
+                <a href="#" class="">Refund Policy</a>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
