@@ -1,576 +1,866 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Pathway Immigration — UI Review | Flyggo Dev Team</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet">
-    <style>
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #006e21;
-            --primary-light: #2EAF45;
-            --secondary: #2658C1;
-            --surface: #f4fcee;
-            --surface-dim: #e9f0e3;
-            --on-surface: #171d15;
-            --on-surface-variant: #3e4a3c;
-            --outline: #6e7b6b;
-        }
-
-        body {
-            font-family: 'Manrope', sans-serif;
-            background: var(--surface);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Animated background grid */
-        .bg-grid {
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(46, 175, 69, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(46, 175, 69, 0.04) 1px, transparent 1px);
-            background-size: 60px 60px;
-            z-index: 0;
-        }
-
-        .bg-grid::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 50% 50%, transparent 0%, var(--surface) 75%);
-        }
-
-        /* Floating orbs */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-            z-index: 0;
-        }
-
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--primary-light);
-            top: -100px;
-            right: -100px;
-            animation: orbit 20s ease-in-out infinite;
-        }
-
-        .orb-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--secondary);
-            bottom: -80px;
-            left: -80px;
-            animation: orbit 25s ease-in-out infinite reverse;
-        }
-
-        .orb-3 {
-            width: 200px;
-            height: 200px;
-            background: var(--primary-light);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse-orb 8s ease-in-out infinite;
-        }
-
-        @keyframes orbit {
-
-            0%,
-            100% {
-                transform: translate(0, 0);
-            }
-
-            25% {
-                transform: translate(-30px, 20px);
-            }
-
-            50% {
-                transform: translate(20px, -30px);
-            }
-
-            75% {
-                transform: translate(-20px, -10px);
+    
+    <!-- SEO Optimization -->
+    <title>Pathway Global | Study Abroad, Immigration &amp; Language Training</title>
+    <meta name="description" content="Pathway Global (formerly known as Pathway Immigration) is a trusted overseas education and immigration consultancy. Get free counseling, application, and visa support.">
+    <meta name="keywords" content="Pathway Global, Pathway Immigration, study abroad consultants, student visa, IELTS coaching, study in Canada, study in UK, study in Australia">
+    <link rel="canonical" href="https://pathwayglobal.in">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS with custom CSS variables configuration -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: "var(--primary)",
+                            light: "var(--primary-light)",
+                            dark: "var(--primary-hover)"
+                        },
+                        secondary: {
+                            DEFAULT: "var(--secondary)",
+                            light: "var(--secondary-light)",
+                            dark: "var(--secondary-hover)"
+                        },
+                        accent: "var(--accent)",
+                        bgDark: "var(--bg-dark)",
+                        bgLight: "var(--bg-light)",
+                        surface: "var(--surface)",
+                        borderCol: "var(--card-border)"
+                    },
+                    borderRadius: {
+                        "24px": "24px",
+                        "card": "24px"
+                    },
+                    spacing: {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px"
+                    }
+                }
             }
         }
-
-        @keyframes pulse-orb {
-
-            0%,
-            100% {
-                opacity: 0.15;
-                transform: translate(-50%, -50%) scale(1);
-            }
-
-            50% {
-                opacity: 0.25;
-                transform: translate(-50%, -50%) scale(1.3);
-            }
-        }
-
-        /* Main container */
-        .container {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 40px 24px;
-            max-width: 900px;
-            width: 100%;
-        }
-
-        /* Badge */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(46, 175, 69, 0.08);
-            border: 1px solid rgba(46, 175, 69, 0.2);
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 32px;
-            animation: fadeInDown 0.6s ease-out;
-        }
-
-        .badge .material-symbols-outlined {
-            font-size: 16px;
-            font-variation-settings: 'FILL' 1;
-        }
-
-        /* Logo area */
-        .logo-area {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            animation: fadeInDown 0.6s ease-out 0.1s both;
-        }
-
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 16px rgba(0, 110, 33, 0.25);
-        }
-
-        .logo-icon .material-symbols-outlined {
-            color: white;
-            font-size: 26px;
-            font-variation-settings: 'FILL' 1;
-        }
-
-        .logo-text {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--on-surface);
-        }
-
-        .logo-text span {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Subtitle */
-        .subtitle {
-            color: var(--on-surface-variant);
-            font-size: 16px;
-            line-height: 1.6;
-            max-width: 480px;
-            margin: 0 auto 48px;
-            animation: fadeInDown 0.6s ease-out 0.2s both;
-        }
-
-        /* Cards grid */
-        .cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 48px;
-            animation: fadeInUp 0.7s ease-out 0.3s both;
-        }
-
-        @media (max-width: 640px) {
-            .cards {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-        }
-
-        /* Card */
-        .card {
-            position: relative;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(110, 123, 107, 0.12);
-            border-radius: 24px;
-            padding: 40px 32px;
-            text-decoration: none;
-            color: var(--on-surface);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 24px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .card.desktop::before {
-            background: linear-gradient(135deg, rgba(46, 175, 69, 0.05), rgba(38, 88, 193, 0.05));
-        }
-
-        .card.mobile::before {
-            background: linear-gradient(135deg, rgba(38, 88, 193, 0.05), rgba(46, 175, 69, 0.05));
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
-            border-color: rgba(46, 175, 69, 0.25);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card:active {
-            transform: translateY(-4px) scale(0.98);
-        }
-
-        .card-icon-wrap {
-            width: 72px;
-            height: 72px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card.desktop .card-icon-wrap {
-            background: linear-gradient(135deg, rgba(46, 175, 69, 0.12), rgba(46, 175, 69, 0.04));
-        }
-
-        .card.mobile .card-icon-wrap {
-            background: linear-gradient(135deg, rgba(38, 88, 193, 0.12), rgba(38, 88, 193, 0.04));
-        }
-
-        .card.desktop .card-icon-wrap .material-symbols-outlined {
-            font-size: 36px;
-            color: var(--primary);
-            font-variation-settings: 'FILL' 1;
-        }
-
-        .card.mobile .card-icon-wrap .material-symbols-outlined {
-            font-size: 36px;
-            color: var(--secondary);
-            font-variation-settings: 'FILL' 1;
-        }
-
-        .card-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-desc {
-            color: var(--on-surface-variant);
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 14px;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-            transition: gap 0.3s ease;
-        }
-
-        .card.desktop .card-cta {
-            color: var(--primary);
-        }
-
-        .card.mobile .card-cta {
-            color: var(--secondary);
-        }
-
-        .card:hover .card-cta {
-            gap: 10px;
-        }
-
-        .card-cta .material-symbols-outlined {
-            font-size: 18px;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover .card-cta .material-symbols-outlined {
-            transform: translateX(4px);
-        }
-
-        /* Dimension label */
-        .card-dimension {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: rgba(0, 0, 0, 0.04);
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--outline);
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-dimension .material-symbols-outlined {
-            font-size: 14px;
-        }
-
-        /* Footer */
-        .footer {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            animation: fadeInUp 0.7s ease-out 0.5s both;
-        }
-
-        .footer-line {
-            width: 48px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
-            margin: 0 auto 16px;
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 6px;
-        }
-
-        .footer-brand .material-symbols-outlined {
-            font-size: 18px;
-            color: var(--primary);
-            font-variation-settings: 'FILL' 1;
-        }
-
-        .footer-brand-text {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--on-surface);
-        }
-
-        .footer-sub {
-            font-size: 12px;
-            color: var(--outline);
-        }
-
-        .footer-note {
-            margin-top: 12px;
-            font-size: 11px;
-            color: var(--outline);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-        }
-
-        .footer-note .material-symbols-outlined {
-            font-size: 14px;
-        }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-16px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Pulse dot for review badge */
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--primary-light);
-            border-radius: 50%;
-            position: relative;
-        }
-
-        .pulse-dot::after {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            border-radius: 50%;
-            border: 2px solid var(--primary-light);
-            animation: pulse-ring 2s ease-out infinite;
-        }
-
-        @keyframes pulse-ring {
-            0% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            100% {
-                opacity: 0;
-                transform: scale(2);
-            }
-        }
-    </style>
+    </script>
+    
+    <!-- Custom Style Overrides -->
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
-<body>
-    <!-- Animated BG -->
-    <div class="bg-grid"></div>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+<body class="bg-bgLight font-body-md text-slate-800 antialiased selection:bg-primary/20 selection:text-primary">
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Review Badge -->
-        <div class="footer-brand">
-            <span class="material-symbols-outlined">code</span>
-            <span class="footer-brand-text">Flyggo Developer Team</span>
-        </div>
-        <!-- Logo -->
-        <div class="logo-area">
-            <div class="logo-icon">
-                <span class="material-symbols-outlined">explore</span>
-            </div>
-            <div class="logo-text"><span>Pathway</span> Immigration</div>
-        </div>
-
-        <!-- Subtitle -->
-        <p class="subtitle">
-            Select a version to review the UI design. Please share your feedback with the development team.
-        </p>
-
-        <!-- Selection Cards -->
-        <div class="cards">
-            <!-- Desktop Card -->
-            <a href="dekstop/index.html" class="card desktop">
-                <div class="card-icon-wrap">
-                    <span class="material-symbols-outlined">desktop_windows</span>
-                </div>
-                <div class="card-dimension">
-                    <span class="material-symbols-outlined">aspect_ratio</span>
-                    1440 × 900
-                </div>
-                <h2 class="card-title">Desktop Version</h2>
-                <p class="card-desc">Full-width layout optimized for laptops and desktop screens with complete feature
-                    set.</p>
-                <div class="card-cta">
-                    Open Desktop UI
-                    <span class="material-symbols-outlined">arrow_forward</span>
-                </div>
-            </a>
-
-            <!-- Mobile Card -->
-            <a href="mobile /index.html" class="card mobile">
-                <div class="card-icon-wrap">
-                    <span class="material-symbols-outlined">smartphone</span>
-                </div>
-                <div class="card-dimension">
-                    <span class="material-symbols-outlined">aspect_ratio</span>
-                    390 × 844
-                </div>
-                <h2 class="card-title">Mobile Version</h2>
-                <p class="card-desc">Touch-first responsive layout designed for smartphones with swipe interactions.</p>
-                <div class="card-cta">
-                    Open Mobile UI
-                    <span class="material-symbols-outlined">arrow_forward</span>
-                </div>
-            </a>
-        </div>
+    <!-- Top Alert Notification Bar -->
+    <div class="bg-secondary text-white text-xs font-bold py-2.5 px-4 text-center z-50 relative flex items-center justify-center gap-2">
+        <span class="pulse-dot text-emerald-400"></span>
+        <span>September intake closing soon — <strong>8 priority spots</strong> remaining</span>
     </div>
+
+    <!-- Top Navigation Bar -->
+    <nav id="main-nav" class="fixed top-9 w-full z-50 glass-nav transition-all duration-300 border-b border-slate-200/50 shadow-sm">
+        <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-3.5 max-w-container-max mx-auto">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center">
+                <svg class="h-12 w-auto" viewBox="0 0 310 65" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(5, 2)" fill="none" stroke-linecap="round">
+                        <path d="M 42,40 C 47,40 54,34 54,26 C 54,18 45,17 38,24 C 28,34 22,50 32,58 C 42,66 58,62 65,52" stroke="var(--secondary)" stroke-width="4.5"/>
+                        <path d="M 33,35 C 26,35 18,30 20,18" stroke="var(--secondary)" stroke-width="1.5" stroke-dasharray="3 3"/>
+                        <path d="M 20,18 L 16,19 L 18,17 L 15,14 L 18,15 L 20,11 L 22,15 L 25,14 L 22,17 L 24,19 Z" fill="var(--secondary)"/>
+                    </g>
+                    <text x="75" y="36" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="24" fill="var(--primary)" letter-spacing="0.5">PATHWAY GLOBAL</text>
+                    <text x="75" y="50" font-family="'Manrope', sans-serif" font-weight="600" font-size="8.5" fill="#475569" letter-spacing="0.1">Study Abroad | Immigration | Language Training</text>
+                </svg>
+            </a>
+            
+            <!-- Desktop Nav Menu -->
+            <div class="hidden lg:flex items-center gap-6">
+                <a class="font-semibold text-sm text-primary border-b-2 border-primary pb-1" href="index.html">Home</a>
+                <a class="font-semibold text-sm text-slate-600 hover:text-primary transition-colors duration-200" href="about.html">About</a>
+                <a class="font-semibold text-sm text-slate-600 hover:text-primary transition-colors duration-200" href="services.html">Services</a>
+                <a class="font-semibold text-sm text-slate-600 hover:text-primary transition-colors duration-200" href="challenges.html">Challenges</a>
+                <a class="font-semibold text-sm text-slate-600 hover:text-primary transition-colors duration-200" href="destinations.html">Destinations</a>
+                <a class="font-semibold text-sm text-slate-600 hover:text-primary transition-colors duration-200" href="process.html">Process</a>
+                <a class="font-semibold text-sm text-slate-600 hover:text-primary transition-colors duration-200" href="faq.html">FAQ</a>
+                <a class="font-semibold text-sm text-slate-600 hover:text-primary transition-colors duration-200" href="comparison.html">Compare Agencies</a>
+            </div>
+            
+            <!-- CTAs -->
+            <div class="flex items-center gap-3">
+                <a href="#contact" class="hidden sm:inline-block bg-primary hover:bg-primary-dark text-white text-xs md:text-sm font-bold px-5 py-2.5 rounded-full transition-all active:scale-95 shadow-sm">
+                    Free Assessment
+                </a>
+                <button class="lg:hidden p-2 text-slate-600 hover:text-primary active:scale-95 transition-transform" onclick="toggleDrawer()">
+                    <span class="material-symbols-outlined text-2xl leading-none block">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="fixed inset-0 z-[100] hidden" id="drawer">
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="toggleDrawer()"></div>
+        <aside class="fixed inset-y-0 left-0 w-80 bg-white shadow-2xl rounded-r-24px p-6 flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-center mb-8 border-b border-slate-100 pb-4">
+                    <a href="index.html" class="flex items-center">
+                        <svg class="h-9 w-auto" viewBox="0 0 310 65" xmlns="http://www.w3.org/2000/svg">
+                            <g transform="translate(5, 2)" fill="none" stroke-linecap="round">
+                                <path d="M 42,40 C 47,40 54,34 54,26 C 54,18 45,17 38,24 C 28,34 22,50 32,58 C 42,66 58,62 65,52" stroke="var(--secondary)" stroke-width="4.5"/>
+                                <path d="M 33,35 C 26,35 18,30 20,18" stroke="var(--secondary)" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                <path d="M 20,18 L 16,19 L 18,17 L 15,14 L 18,15 L 20,11 L 22,15 L 25,14 L 22,17 L 24,19 Z" fill="var(--secondary)"/>
+                            </g>
+                            <text x="75" y="36" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="24" fill="var(--primary)" letter-spacing="0.5">PATHWAY GLOBAL</text>
+                            <text x="75" y="50" font-family="'Manrope', sans-serif" font-weight="600" font-size="8.5" fill="#475569" letter-spacing="0.1">Study Abroad | Immigration | Language Training</text>
+                        </svg>
+                    </a>
+                    <button class="material-symbols-outlined text-slate-400 hover:text-red-500 transition-colors p-1" onclick="toggleDrawer()">close</button>
+                </div>
+                <nav class="flex flex-col gap-2">
+                    <a class="flex items-center gap-4 bg-primary/10 text-primary rounded-xl px-4 py-3 font-semibold text-sm" href="index.html" onclick="toggleDrawer()">
+                        <span class="material-symbols-outlined text-lg">home</span> Home
+                    </a>
+                    <a class="flex items-center gap-4 text-slate-600 px-4 py-3 font-semibold text-sm hover:bg-slate-50 rounded-xl transition-colors" href="about.html" onclick="toggleDrawer()">
+                        <span class="material-symbols-outlined text-lg">person</span> About Us
+                    </a>
+                    <a class="flex items-center gap-4 text-slate-600 px-4 py-3 font-semibold text-sm hover:bg-slate-50 rounded-xl transition-colors" href="services.html" onclick="toggleDrawer()">
+                        <span class="material-symbols-outlined text-lg">school</span> Services &amp; Programs
+                    </a>
+                    <a class="flex items-center gap-4 text-slate-600 px-4 py-3 font-semibold text-sm hover:bg-slate-50 rounded-xl transition-colors" href="challenges.html" onclick="toggleDrawer()">
+                        <span class="material-symbols-outlined text-lg">warning</span> Common Challenges
+                    </a>
+                    <a class="flex items-center gap-4 text-slate-600 px-4 py-3 font-semibold text-sm hover:bg-slate-50 rounded-xl transition-colors" href="destinations.html" onclick="toggleDrawer()">
+                        <span class="material-symbols-outlined text-lg">public</span> Destinations
+                    </a>
+                    <a class="flex items-center gap-4 text-slate-600 px-4 py-3 font-semibold text-sm hover:bg-slate-50 rounded-xl transition-colors" href="process.html" onclick="toggleDrawer()">
+                        <span class="material-symbols-outlined text-lg">timeline</span> Roadmap
+                    </a>
+                    <a class="flex items-center gap-4 text-slate-600 px-4 py-3 font-semibold text-sm hover:bg-slate-50 rounded-xl transition-colors" href="faq.html" onclick="toggleDrawer()">
+                        <span class="material-symbols-outlined text-lg">chat</span> FAQ
+                    </a>
+                    <a class="flex items-center gap-4 text-slate-600 px-4 py-3 font-semibold text-sm hover:bg-slate-50 rounded-xl transition-colors" href="comparison.html" onclick="toggleDrawer()">
+                        <span class="material-symbols-outlined text-lg">compare_arrows</span> Compare Agencies
+                    </a>
+                </nav>
+            </div>
+            
+            <div class="border-t border-slate-100 pt-6">
+                <a href="#contact" onclick="toggleDrawer()" class="w-full bg-primary hover:bg-primary-dark text-white text-center font-bold py-3.5 rounded-xl block shadow-md">
+                    Claim Free Profile Audit
+                </a>
+                <p class="text-[10px] text-slate-400 text-center mt-3 uppercase tracking-wider">Formerly Pathway Immigration</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Main Container -->
+    <main id="home" class="pt-24 overflow-x-hidden">
+        
+        <!-- Hero Section -->
+        <section class="relative pt-10 md:pt-16 pb-20 md:pb-24 overflow-hidden bg-bgLight">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Hero Content Left (Column 7) -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                            Formerly known as Pathway Immigration
+                        </div>
+                        
+                        <h1 class="font-headline-md text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+                            Study Abroad<br>
+                            <span class="gradient-text text-secondary">Made Simple.</span>
+                        </h1>
+                        
+                        <p class="font-body-lg text-base md:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-semibold">
+                            Helping students build successful international careers through expert counselling, university admissions, visa assistance, and language training.
+                        </p>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                            <a href="#contact" class="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all active:scale-[0.98]">
+                                Book Free Consultation <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </a>
+                            <a href="destinations.html" class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold py-4 px-8 rounded-xl text-center transition-all active:scale-[0.98] shadow-sm flex items-center justify-center gap-2">
+                                Explore Countries <span class="material-symbols-outlined text-lg">explore</span>
+                            </a>
+                        </div>
+                        
+                        <!-- Trust Numbers -->
+                        <div class="grid grid-cols-4 gap-4 pt-6 border-t border-slate-200/50 max-w-md mx-auto lg:mx-0 text-left">
+                            <div>
+                                <p class="text-xl md:text-2xl font-extrabold text-slate-900 leading-none">3+</p>
+                                <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider mt-1">Years Exp</p>
+                            </div>
+                            <div>
+                                <p class="text-xl md:text-2xl font-extrabold text-primary leading-none">500+</p>
+                                <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider mt-1">Admitted</p>
+                            </div>
+                            <div>
+                                <p class="text-xl md:text-2xl font-extrabold text-secondary leading-none">9+</p>
+                                <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider mt-1">Countries</p>
+                            </div>
+                            <div>
+                                <p class="text-xl md:text-2xl font-extrabold text-slate-900 leading-none">100%</p>
+                                <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider mt-1">Personal</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Boarding Pass Component Right (Column 5) -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="w-full max-w-[390px] rounded-24px border border-slate-200/80 shadow-2xl p-6 relative ticket-cutout hover-lift">
+                            
+                            <!-- Ticket Top Branding -->
+                            <div class="flex justify-between items-center pb-4 border-b border-slate-100">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-md bg-secondary flex items-center justify-center"><span class="material-symbols-outlined text-white text-xs">explore</span></div>
+                                    <span class="text-[10px] font-extrabold text-secondary uppercase tracking-widest">Pathway Global</span>
+                                </div>
+                                <span class="text-[9px] bg-secondary/15 text-secondary px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider">Boarding Pass • Fall 2026</span>
+                            </div>
+
+                            <!-- Passenger Metadata -->
+                            <div class="grid grid-cols-3 gap-4 pt-4 text-left">
+                                <div>
+                                    <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider">Passenger</p>
+                                    <p class="text-xs font-bold text-slate-800 leading-none mt-1">STUDENT / FUTURE</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider">Flight</p>
+                                    <p class="text-xs font-bold text-slate-800 leading-none mt-1">PA-2026</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider">Date / Boarding</p>
+                                    <p class="text-xs font-bold text-slate-800 leading-none mt-1">F26 • 09:00</p>
+                                </div>
+                            </div>
+
+                            <!-- Destination Notches & Flight details -->
+                            <div class="flex justify-between items-center py-6">
+                                <div class="text-left">
+                                    <h4 class="text-3xl font-extrabold text-slate-900 leading-none">MAA</h4>
+                                    <p class="text-[9px] font-bold text-slate-400 mt-1 uppercase tracking-wider">Chennai (TN)</p>
+                                </div>
+                                
+                                <div class="flex flex-col items-center flex-grow px-4">
+                                    <span class="text-xs text-primary font-bold uppercase tracking-widest">Tuition-Free</span>
+                                    <div class="w-full flex items-center my-1.5">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
+                                        <div class="flex-grow border-t-2 border-dashed border-slate-300"></div>
+                                        <span class="material-symbols-outlined text-secondary text-base mx-1 rotate-90 leading-none">flight</span>
+                                        <div class="flex-grow border-t-2 border-dashed border-slate-300"></div>
+                                        <div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
+                                    </div>
+                                    <span class="text-[9px] text-slate-400 font-bold uppercase tracking-wider">MD / Nursing Specialty</span>
+                                </div>
+                                
+                                <div class="text-right">
+                                    <h4 class="text-3xl font-extrabold text-slate-900 leading-none">FRA</h4>
+                                    <p class="text-[9px] font-bold text-slate-400 mt-1 uppercase tracking-wider">Frankfurt (DE)</p>
+                                </div>
+                            </div>
+
+                            <!-- Approved Stamp Overlay -->
+                            <div class="absolute right-8 top-28 border-3 border-emerald-500/80 text-emerald-600 font-black text-[10px] tracking-widest uppercase px-3 py-1.5 rounded-lg border-2 rotate-[-12deg] pointer-events-none select-none animate-pulse bg-white/70">
+                                ✓ APPROVED<br><span class="text-[8px] tracking-normal">VISA SECURED</span>
+                            </div>
+
+                            <!-- Ticket cut details -->
+                            <div class="ticket-divider my-2 pt-4"></div>
+
+                            <!-- Ticket Bottom stats -->
+                            <div class="grid grid-cols-3 gap-4 text-left">
+                                <div>
+                                    <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider">Visa Success</p>
+                                    <p class="text-sm font-extrabold text-slate-800 leading-none mt-1">98%</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider">Scholarships</p>
+                                    <p class="text-sm font-extrabold text-primary leading-none mt-1">$2.1M</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider">Avg Tuition Saved</p>
+                                    <p class="text-sm font-extrabold text-secondary leading-none mt-1">$22,000+</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-12 gap-2 pt-6 items-center">
+                                <div class="col-span-8 space-y-1">
+                                    <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider">Admitted College</p>
+                                    <p class="text-[10px] font-bold text-slate-700 leading-none">MASTERS - 1.5 - 2YR</p>
+                                    <div class="flex gap-2 text-[8px] font-bold text-slate-400 uppercase">
+                                        <span>TU Munich</span>
+                                        <span>Heidelberg</span>
+                                    </div>
+                                </div>
+                                <div class="col-span-4 text-right">
+                                    <div class="inline-flex flex-col items-center">
+                                        <span class="w-16 h-8 bg-[repeating-linear-gradient(90deg,black,black_2px,transparent_2px,transparent_4px)] block"></span>
+                                        <span class="text-[8px] font-bold text-slate-400 mt-1 uppercase">Seat • 24A</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Positioning Introduction (About Us Card) -->
+        <section class="py-16 bg-white border-y border-slate-200/50">
+            <div class="max-w-4xl mx-auto px-margin-mobile text-center space-y-6">
+                <span class="text-[9px] bg-primary/10 text-primary px-3 py-1 rounded-full font-bold uppercase tracking-widest">Your Study Abroad Partner Every Step of the Way</span>
+                <p class="text-base md:text-lg text-slate-700 leading-relaxed font-semibold">
+                    Finding the right university, securing funding, and navigating visa requirements can feel like a lot to handle - but what if you had a Pathway Global study abroad consultants to take care of it with you? That’s where Pathway Global steps in. With 3+ years of experience, we’ve helped 500+ students get into top universities across the world. From choosing the right universities and courses to securing funding, getting your visa, and settling in - we handle everything, so you can focus on your future. With Pathway Global, you don’t have to worry about a thing. Let’s make your study abroad journey smooth, stress-free, and successful.
+                </p>
+                <div class="flex flex-wrap justify-center gap-6 text-xs text-slate-400 uppercase tracking-wider font-bold pt-4">
+                    <span>✓ Highest Visa Success Rate</span>
+                    <span>•</span>
+                    <span>✓ Global Placements</span>
+                    <span>•</span>
+                    <span>✓ 800+ Partners</span>
+                </div>
+            </div>
+        </section>
+        <!-- Enquiry Form ("Get FREE Counselling Today!") Section -->
+        <section id="contact" class="py-20 bg-slate-50 border-t border-slate-200/50">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-5 text-left space-y-6">
+                        <h3 class="text-3xl font-extrabold text-slate-900 leading-tight">Get FREE Counselling Today!</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed font-semibold">
+                            Enter your details and our expert will reach out to you to discuss your plans. By the way, all our services are free!
+                        </p>
+                        <div class="p-5 bg-white rounded-2xl border border-slate-200/60 shadow-sm italic text-xs text-slate-500 leading-relaxed">
+                            "Ungal Kanavu, Engal Poruppu." — Your Dream, Our Responsibility.
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-7 bg-white rounded-24px p-6 md:p-10 border border-slate-200/60 shadow-lg text-left">
+                        <form class="space-y-4" onsubmit="event.preventDefault(); alert('Enquiry submitted successfully! Our expert counselor will connect with you within 24 hours.');">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-xs font-bold text-slate-600 mb-1 block">First name*</label>
+                                    <input type="text" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="Rahul">
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold text-slate-600 mb-1 block">Last name*</label>
+                                    <input type="text" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="Sharma">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="text-xs font-bold text-slate-600 mb-1 block">Email address*</label>
+                                <input type="email" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="rahul@example.com">
+                            </div>
+                            
+                            <div>
+                                <label class="text-xs font-bold text-slate-600 mb-1 block">Mobile number*</label>
+                                <div class="flex gap-2">
+                                    <select class="bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-sm focus:ring-2 focus:ring-primary focus:bg-white cursor-pointer">
+                                        <option value="+91">+91 (IN)</option>
+                                        <option value="+44">+44 (UK)</option>
+                                        <option value="+1">+1 (US)</option>
+                                    </select>
+                                    <input type="tel" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="98765 43210">
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-xs font-bold text-slate-600 mb-1 block">Your preferred study destination*</label>
+                                    <select required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all cursor-pointer">
+                                        <option value="">Select Destination</option>
+                                        <option>United Kingdom</option>
+                                        <option>Canada</option>
+                                        <option>Germany</option>
+                                        <option>Australia</option>
+                                        <option>New Zealand</option>
+                                        <option>Ireland</option>
+                                        <option>Georgia (MBBS)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold text-slate-600 mb-1 block">When would you like to start?*</label>
+                                    <select required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all cursor-pointer">
+                                        <option value="">Select Date</option>
+                                        <option>Sep 2026 Intake</option>
+                                        <option>Jan 2027 Intake</option>
+                                        <option>Later</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-xs font-bold text-slate-600 mb-1 block">Nearest Hub Office*</label>
+                                    <select required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all cursor-pointer">
+                                        <option value="">Select Office</option>
+                                        <option>Chennai Regional Head Office</option>
+                                        <option>Bangalore Karnataka Hub</option>
+                                        <option>Kerala Support Office (Kochi)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold text-slate-600 mb-1 block">Preferred mode of counselling*</label>
+                                    <select required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all cursor-pointer">
+                                        <option value="">Select Mode</option>
+                                        <option>In-person Walk-in</option>
+                                        <option>Video Call Session</option>
+                                        <option>Phone Consultation</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-xs font-bold text-slate-600 mb-1 block">Preferred study level*</label>
+                                    <select required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all cursor-pointer">
+                                        <option value="">Select Level</option>
+                                        <option>Undergraduate (Bachelor)</option>
+                                        <option>Postgraduate (Master/PhD)</option>
+                                        <option>Specialized MBBS / MD</option>
+                                        <option>Specialized Nursing</option>
+                                        <option>Diploma / Top-up</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold text-slate-600 mb-1 block">How would you fund your education?*</label>
+                                    <select required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all cursor-pointer">
+                                        <option value="">Select Option</option>
+                                        <option>Self-Funded / Parents</option>
+                                        <option>Education Loan Assistance</option>
+                                        <option>Scholarship seeking</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-2 pt-2 text-xs text-slate-500">
+                                <label class="flex items-start gap-2.5">
+                                    <input type="checkbox" required class="rounded border-slate-300 text-primary focus:ring-primary mt-0.5 cursor-pointer">
+                                    <span>I agree to Pathway Global Terms and privacy policy*</span>
+                                </label>
+                                <label class="flex items-start gap-2.5">
+                                    <input type="checkbox" required class="rounded border-slate-300 text-primary focus:ring-primary mt-0.5 cursor-pointer">
+                                    <span>Please contact me by phone, email or SMS to assist with my enquiry*</span>
+                                </label>
+                                <label class="flex items-start gap-2.5">
+                                    <input type="checkbox" class="rounded border-slate-300 text-primary focus:ring-primary mt-0.5 cursor-pointer">
+                                    <span>I would like to receive updates and offers from Pathway Global</span>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="w-full py-4 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary-dark transition-all mt-4 flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-lg">bolt</span> Avail FREE Counselling
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Why Students Trust Pathway Global Section -->
+        <section class="py-20 md:py-28 bg-white border-b border-slate-200/50">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                
+                <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                    <span class="text-[9px] bg-secondary/10 text-secondary px-3 py-1 rounded-full font-bold uppercase tracking-widest">CREDIBILITY &amp; STABILITY</span>
+                    <h2 class="font-headline-md text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Why Students Trust Pathway Global
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Trust 1 -->
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/50 hover-lift text-left">
+                        <span class="material-symbols-outlined text-primary text-3xl">verified</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-3">Highest Visa Success Rate</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed mt-2">Our deep expertise in student visas and ex-consulate checks improves your chances of approval.</p>
+                    </div>
+                    <!-- Trust 2 -->
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/50 hover-lift text-left">
+                        <span class="material-symbols-outlined text-secondary text-3xl">language</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-3">Global Placements</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed mt-2">Connecting students with opportunities and colleges across top world-class destinations.</p>
+                    </div>
+                    <!-- Trust 3 -->
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/50 hover-lift text-left">
+                        <span class="material-symbols-outlined text-primary text-3xl">corporate_fare</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-3">800+ University Partnerships</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed mt-2">We work directly with top institutions worldwide, giving you exclusive access to the best programs.</p>
+                    </div>
+                    <!-- Trust 4 -->
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/50 hover-lift text-left">
+                        <span class="material-symbols-outlined text-secondary text-3xl">bolt</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-3">FastLane Eligibility</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed mt-2">Get Instant Offers! Check your eligibility and get in-principle offers from select universities in minutes.</p>
+                    </div>
+                    <!-- Trust 5 -->
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/50 hover-lift text-left">
+                        <span class="material-symbols-outlined text-primary text-3xl">payments</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-3">Free Expert Services</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed mt-2">Our university career counselling services are completely free for students.</p>
+                    </div>
+                    <!-- Trust 6 -->
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/50 hover-lift text-left">
+                        <span class="material-symbols-outlined text-secondary text-3xl">grade</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-3">Loved by Students</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed mt-2">We are rated 4.8/5 on Google reviews, and 9 out of 10 students recommend us for our support.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services We Handle Section -->
+        <section class="py-20 bg-slate-50 border-t border-b border-slate-200/50">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                
+                <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                    <span class="text-[9px] bg-primary/10 text-primary px-3 py-1 rounded-full font-bold uppercase tracking-widest">WE HANDLE IT ALL</span>
+                    <h2 class="font-headline-md text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Pathway Global's Services
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-left">
+                    <!-- Service 1 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover-lift">
+                        <span class="material-symbols-outlined text-primary text-2xl">chat</span>
+                        <h4 class="font-bold text-slate-800 text-sm mt-3">Personalized Counseling</h4>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover-lift">
+                        <span class="material-symbols-outlined text-secondary text-2xl">description</span>
+                        <h4 class="font-bold text-slate-800 text-sm mt-3">Application Support</h4>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover-lift">
+                        <span class="material-symbols-outlined text-primary text-2xl">verified_user</span>
+                        <h4 class="font-bold text-slate-800 text-sm mt-3">Visa Assistance</h4>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover-lift">
+                        <span class="material-symbols-outlined text-secondary text-2xl">payments</span>
+                        <h4 class="font-bold text-slate-800 text-sm mt-3">Education Loans</h4>
+                    </div>
+                    <!-- Service 5 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover-lift">
+                        <span class="material-symbols-outlined text-primary text-2xl">health_and_safety</span>
+                        <h4 class="font-bold text-slate-800 text-sm mt-3">Student Health Cover</h4>
+                    </div>
+                    <!-- Service 6 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover-lift">
+                        <span class="material-symbols-outlined text-secondary text-2xl">sim_card</span>
+                        <h4 class="font-bold text-slate-800 text-sm mt-3">International SIM Cards</h4>
+                    </div>
+                    <!-- Service 7 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover-lift">
+                        <span class="material-symbols-outlined text-primary text-2xl">account_balance</span>
+                        <h4 class="font-bold text-slate-800 text-sm mt-3">Banking Services</h4>
+                    </div>
+                    <!-- Service 8 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover-lift">
+                        <span class="material-symbols-outlined text-secondary text-2xl">home</span>
+                        <h4 class="font-bold text-slate-800 text-sm mt-3">Accommodation Support</h4>
+                    </div>
+                    <!-- Service 9 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover-lift">
+                        <span class="material-symbols-outlined text-primary text-2xl">flight_takeoff</span>
+                        <h4 class="font-bold text-slate-800 text-sm mt-3">Pre-Departure Briefs</h4>
+                    </div>
+                    <!-- Service 10 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover-lift">
+                        <span class="material-symbols-outlined text-secondary text-2xl">support_agent</span>
+                        <h4 class="font-bold text-slate-800 text-sm mt-3">Post-Arrival Support</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study in Top Countries Section -->
+        <section class="py-20 md:py-28 bg-white border-b border-slate-200/50">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                
+                <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                    <span class="text-[9px] bg-secondary/10 text-secondary px-3 py-1 rounded-full font-bold uppercase tracking-widest">GLOBAL HUBS</span>
+                    <h2 class="font-headline-md text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Study in Top Destinations
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                    <!-- Australia -->
+                    <div class="bg-slate-50 p-6 rounded-24px border border-slate-200/60 shadow-sm flex flex-col justify-between hover-lift">
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-extrabold text-slate-900">Study in Australia</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Australia has 9 of the world's top 100 universities. 88% of international graduates land jobs within four months.</p>
+                            <div class="border-t border-slate-200/50 pt-4 grid grid-cols-2 gap-4 text-xs font-bold text-slate-600">
+                                <div>
+                                    <p class="text-[9px] text-slate-400 uppercase">Avg Salary</p>
+                                    <p class="text-slate-800 mt-0.5">AUD 65,000</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-400 uppercase">Top Streams</p>
+                                    <p class="text-slate-800 mt-0.5">IT, Health, Eng</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Canada -->
+                    <div class="bg-slate-50 p-6 rounded-24px border border-slate-200/60 shadow-sm flex flex-col justify-between hover-lift">
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-extrabold text-slate-900">Study in Canada</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">High probability of permanent residence (PR). Post-Graduation Work Permit (PGWP) allows working up to 3 years.</p>
+                            <div class="border-t border-slate-200/50 pt-4 grid grid-cols-2 gap-4 text-xs font-bold text-slate-600">
+                                <div>
+                                    <p class="text-[9px] text-slate-400 uppercase">Avg Salary</p>
+                                    <p class="text-slate-800 mt-0.5">CAD 50,000</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-400 uppercase">Top Streams</p>
+                                    <p class="text-slate-800 mt-0.5">IT &amp; AI, Health</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- UK -->
+                    <div class="bg-slate-50 p-6 rounded-24px border border-slate-200/60 shadow-sm flex flex-col justify-between hover-lift">
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-extrabold text-slate-900">Study in UK</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Home to 4 of the top 10 universities. Graduate Route visa lets you stay and work for 2 years (3 years for PhD).</p>
+                            <div class="border-t border-slate-200/50 pt-4 grid grid-cols-2 gap-4 text-xs font-bold text-slate-600">
+                                <div>
+                                    <p class="text-[9px] text-slate-400 uppercase">Avg Starting</p>
+                                    <p class="text-slate-800 mt-0.5">GBP 38,700</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-400 uppercase">Top Streams</p>
+                                    <p class="text-slate-800 mt-0.5">Finance, Data Sci</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- USA -->
+                    <div class="bg-slate-50 p-6 rounded-24px border border-slate-200/60 shadow-sm flex flex-col justify-between hover-lift">
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-extrabold text-slate-900">Study in USA</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Highest number of top-ranked colleges. STEM Optional Practical Training (OPT) lets you work for up to 3 years.</p>
+                            <div class="border-t border-slate-200/50 pt-4 grid grid-cols-2 gap-4 text-xs font-bold text-slate-600">
+                                <div>
+                                    <p class="text-[9px] text-slate-400 uppercase">Avg Salary</p>
+                                    <p class="text-slate-800 mt-0.5">USD 100,000</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-400 uppercase">Top Streams</p>
+                                    <p class="text-slate-800 mt-0.5">STEM, Management</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Zealand -->
+                    <div class="bg-slate-50 p-6 rounded-24px border border-slate-200/60 shadow-sm flex flex-col justify-between hover-lift">
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-extrabold text-slate-900">Study in New Zealand</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Excellent work-life balance. Post-study work visa allows graduates to stay for up to 2 years.</p>
+                            <div class="border-t border-slate-200/50 pt-4 grid grid-cols-2 gap-4 text-xs font-bold text-slate-600">
+                                <div>
+                                    <p class="text-[9px] text-slate-400 uppercase">Avg Salary</p>
+                                    <p class="text-slate-800 mt-0.5">NZD 53,000</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-400 uppercase">Top Streams</p>
+                                    <p class="text-slate-800 mt-0.5">Agriculture, Eng</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ireland -->
+                    <div class="bg-slate-50 p-6 rounded-24px border border-slate-200/60 shadow-sm flex flex-col justify-between hover-lift">
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-extrabold text-slate-900">Study in Ireland</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Europe's tech hub with Google &amp; Facebook. Third Level Graduate Programme lets you stay up to 2 years.</p>
+                            <div class="border-t border-slate-200/50 pt-4 grid grid-cols-2 gap-4 text-xs font-bold text-slate-600">
+                                <div>
+                                    <p class="text-[9px] text-slate-400 uppercase">Avg Salary</p>
+                                    <p class="text-slate-800 mt-0.5">€35,000</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-400 uppercase">Top Streams</p>
+                                    <p class="text-slate-800 mt-0.5">Tech, Pharma</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FAQs Section -->
+        <section id="faq" class="py-20 md:py-28 bg-white">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                
+                <div class="text-center max-w-xl mx-auto mb-16 space-y-4">
+                    <span class="text-[9px] bg-primary/10 text-primary px-3 py-1 rounded-full font-bold uppercase tracking-widest">QUESTIONS, ANSWERED</span>
+                    <h2 class="font-headline-md text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Frequently Asked Questions
+                    </h2>
+                </div>
+                
+                <div class="max-w-2xl mx-auto space-y-4 text-left">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item bg-white border border-slate-200 rounded-2xl p-5 hover-lift transition-all">
+                        <button class="faq-trigger w-full flex justify-between items-center font-bold text-slate-800 text-sm md:text-base outline-none">
+                            <span>1. How can Pathway Global help me choose the right university?</span>
+                            <span class="faq-icon material-symbols-outlined transition-transform duration-300 text-slate-400">expand_more</span>
+                        </button>
+                        <p class="faq-answer hidden text-xs md:text-sm text-slate-500 leading-relaxed mt-3 border-t border-slate-100 pt-3">
+                            Pathway Global's study abroad consultants assess your academic background, career aspirations, and financial preferences to match you with the best-fit universities and courses.
+                        </p>
+                    </div>
+                    
+                    <!-- FAQ 2 -->
+                    <div class="faq-item bg-white border border-slate-200 rounded-2xl p-5 hover-lift transition-all">
+                        <button class="faq-trigger w-full flex justify-between items-center font-bold text-slate-800 text-sm md:text-base outline-none">
+                            <span>2. What is FastLane, and how does it work?</span>
+                            <span class="faq-icon material-symbols-outlined transition-transform duration-300 text-slate-400">expand_more</span>
+                        </button>
+                        <p class="faq-answer hidden text-xs md:text-sm text-slate-500 leading-relaxed mt-3 border-t border-slate-100 pt-3">
+                            Pathway Global FastLane allows students to receive an instant in-principle offer from select universities based on their academic profile, significantly reducing waiting time.
+                        </p>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item bg-white border border-slate-200 rounded-2xl p-5 hover-lift transition-all">
+                        <button class="faq-trigger w-full flex justify-between items-center font-bold text-slate-800 text-sm md:text-base outline-none">
+                            <span>3. Does Pathway Global assist with visa applications?</span>
+                            <span class="faq-icon material-symbols-outlined transition-transform duration-300 text-slate-400">expand_more</span>
+                        </button>
+                        <p class="faq-answer hidden text-xs md:text-sm text-slate-500 leading-relaxed mt-3 border-t border-slate-100 pt-3">
+                            Yes, Pathway Global's study visa consultants provide end-to-end visa support, from documentation preparation to interview guidance, increasing your chances of visa approval.
+                        </p>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item bg-white border border-slate-200 rounded-2xl p-5 hover-lift transition-all">
+                        <button class="faq-trigger w-full flex justify-between items-center font-bold text-slate-800 text-sm md:text-base outline-none">
+                            <span>4. Will Pathway Global support me after I reach my study destination?</span>
+                            <span class="faq-icon material-symbols-outlined transition-transform duration-300 text-slate-400">expand_more</span>
+                        </button>
+                        <p class="faq-answer hidden text-xs md:text-sm text-slate-500 leading-relaxed mt-3 border-t border-slate-100 pt-3">
+                            Absolutely! Pathway Global provides post-arrival support, helping you with accommodation, banking, SIM cards, and settling into your new environment.
+                        </p>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item bg-white border border-slate-200 rounded-2xl p-5 hover-lift transition-all">
+                        <button class="faq-trigger w-full flex justify-between items-center font-bold text-slate-800 text-sm md:text-base outline-none">
+                            <span>5. Are there any scholarships to study abroad for Indian students?</span>
+                            <span class="faq-icon material-symbols-outlined transition-transform duration-300 text-slate-400">expand_more</span>
+                        </button>
+                        <p class="faq-answer hidden text-xs md:text-sm text-slate-500 leading-relaxed mt-3 border-t border-slate-100 pt-3">
+                            Yes, Pathway Global provides guidance on scholarships to study abroad for Indian students and financial aid opportunities to help ease the financial burden of studying abroad.
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+    </main>
 
     <!-- Footer -->
-    <div class="footer">
-        <div class="footer-line"></div>
-        <div class="footer-brand">
-            <span class="material-symbols-outlined">code</span>
-            <span class="footer-brand-text">Flyggo Developer Team</span>
+    <footer class="bg-slate-900 text-slate-300 pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-10">
+            <!-- Col 1 -->
+            <div class="space-y-4 text-left">
+                <a href="index.html" class="flex items-center">
+                    <svg class="h-10 w-auto" viewBox="0 0 310 65" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(5, 2)" fill="none" stroke-linecap="round">
+                            <path d="M 42,40 C 47,40 54,34 54,26 C 54,18 45,17 38,24 C 28,34 22,50 32,58 C 42,66 58,62 65,52" stroke="var(--secondary)" stroke-width="4.5"/>
+                            <path d="M 33,35 C 26,35 18,30 20,18" stroke="var(--secondary)" stroke-width="1.5" stroke-dasharray="3 3"/>
+                            <path d="M 20,18 L 16,19 L 18,17 L 15,14 L 18,15 L 20,11 L 22,15 L 25,14 L 22,17 L 24,19 Z" fill="var(--secondary)"/>
+                        </g>
+                        <text x="75" y="36" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="24" fill="var(--primary)" letter-spacing="0.5">PATHWAY GLOBAL</text>
+                        <text x="75" y="50" font-family="'Manrope', sans-serif" font-weight="600" font-size="8.5" fill="#f8fafc" letter-spacing="0.1">Study Abroad | Immigration | Language Training</text>
+                    </svg>
+                </a>
+                <p class="text-xs text-slate-400 leading-relaxed font-semibold">
+                    Pathway Global is a trusted overseas education and immigration consultancy helping students achieve their dream of studying abroad.
+                </p>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Formerly Pathway Immigration</p>
+            </div>
+            
+            <!-- Col 2 -->
+            <div class="space-y-4 text-left">
+                <h4 class="text-white font-bold text-sm tracking-wider uppercase">Destinations</h4>
+                <ul class="space-y-2.5 text-xs text-slate-400">
+                    <li><a class="hover:text-primary transition-colors" href="destinations.html">Study in Australia</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="destinations.html">Study in Canada</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="destinations.html">Study in United Kingdom</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="destinations.html">Study in Germany</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="destinations.html">Study in New Zealand</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="destinations.html">Study in Ireland</a></li>
+                </ul>
+            </div>
+            
+            <!-- Col 3 -->
+            <div class="space-y-4 text-left">
+                <h4 class="text-white font-bold text-sm tracking-wider uppercase">Language Coaching</h4>
+                <ul class="space-y-2.5 text-xs text-slate-400">
+                    <li><a class="hover:text-primary transition-colors" href="services.html">IELTS Training</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="services.html">German Prep</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="services.html">OET Coaching</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="services.html">English Training</a></li>
+                </ul>
+            </div>
+            
+            <!-- Col 4 -->
+            <div class="space-y-4 text-left">
+                <h4 class="text-white font-bold text-sm tracking-wider uppercase">Domestic Centers Hub</h4>
+                <ul class="space-y-3 text-xs text-slate-400">
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-sm">location_on</span>
+                        <span>Chennai Head Office</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-sm">location_on</span>
+                        <span>Bangalore &amp; Kerala Centers</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-sm">call</span>
+                        <span>+91 800-PATHWAY (+91 80072 84929)</span>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <p class="footer-sub">Pathway Immigration — UI Review Build</p>
-        <div class="footer-note">
-            <span class="material-symbols-outlined">info</span>
-            This is an internal preview. Kindly check and share feedback, sir.
+        
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop border-t border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <p>© 2026 Pathway Global. All rights reserved. Formerly known as Pathway Immigration.</p>
+            <div class="flex gap-4">
+                <a href="index.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="index.html" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="index.html" class="hover:text-white transition-colors">Refund Policy</a>
+            </div>
         </div>
-    </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
