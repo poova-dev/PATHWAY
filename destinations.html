@@ -621,6 +621,23 @@
             const pointsGlobe = new THREE.Points(geometry, pointsMaterial);
             globeGroup.add(pointsGlobe);
 
+            // Load World Map Texture to show landmasses/continents
+            const textureLoader = new THREE.TextureLoader();
+            textureLoader.setCrossOrigin('anonymous');
+            textureLoader.load('https://unpkg.com/three-globe@2.45.2/example/img/earth-dark.jpg', (texture) => {
+                const earthMaterial = new THREE.MeshBasicMaterial({
+                    map: texture,
+                    transparent: true,
+                    opacity: 0.5,
+                    color: 0x2962ff, // Blue tint matching the theme
+                    blending: THREE.AdditiveBlending
+                });
+                const earthMesh = new THREE.Mesh(geometry, earthMaterial);
+                globeGroup.add(earthMesh);
+            }, undefined, (err) => {
+                console.error("Error loading Earth texture:", err);
+            });
+
             // Coordinate translation helper (Lat/Lon to Vector3)
             function latLongToVector3(lat, lon, r) {
                 const phi = (90 - lat) * (Math.PI / 180);
