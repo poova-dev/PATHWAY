@@ -503,6 +503,24 @@
 
     <!-- Interactive JavaScript -->
     <script src="assets/js/main.js"></script>
+
+    <!-- Intake Urgency Popup Card -->
+    <div id="intake-urgency-popup" class="fixed bottom-6 right-6 z-[99] max-w-sm w-[calc(100%-32px)] sm:w-full bg-white/80 backdrop-blur-lg border border-slate-200/80 p-5 rounded-24px shadow-2xl translate-y-full opacity-0 pointer-events-none transition-all duration-500 text-left flex flex-col gap-4">
+        <button onclick="closeIntakePopup()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors p-1" aria-label="Close urgency message">
+            <span class="material-symbols-outlined text-lg leading-none block">close</span>
+        </button>
+        <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-secondary text-2xl mt-0.5" style="font-variation-settings: 'FILL' 1;">error</span>
+            <div class="space-y-1">
+                <h4 class="font-extrabold text-slate-900 text-sm">September Intake Urgency</h4>
+                <p class="text-[11px] text-slate-500 leading-relaxed font-semibold">September intake is closing soon. Only <strong>8 priority spots</strong> remaining for visa slots!</p>
+            </div>
+        </div>
+        <button onclick="scrollToEnquiry()" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-sm">bolt</span> Enter Enquiry
+        </button>
+    </div>
+
 </body>
 
 </html>

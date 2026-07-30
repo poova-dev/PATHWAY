@@ -260,3 +260,34 @@ function calculateAdvisor() {
     outputContainer.classList.remove('hidden');
 }
 
+// Show Delayed Intake Urgency Popup after 15 seconds (15000ms)
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        if (sessionStorage.getItem('intake_popup_closed') === 'true') return;
+        const popup = document.getElementById('intake-urgency-popup');
+        if (popup) {
+            popup.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+            popup.classList.add('translate-y-0', 'opacity-100');
+        }
+    }, 15000);
+});
+
+// Close Urgency Popup globally accessible
+window.closeIntakePopup = function() {
+    const popup = document.getElementById('intake-urgency-popup');
+    if (popup) {
+        popup.classList.remove('translate-y-0', 'opacity-100');
+        popup.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+        sessionStorage.setItem('intake_popup_closed', 'true');
+    }
+};
+
+// Scroll to enquiry form and close popup
+window.scrollToEnquiry = function() {
+    window.closeIntakePopup();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
