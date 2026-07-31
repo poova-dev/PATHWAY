@@ -34,37 +34,37 @@ function animateStats(id, end, suffix = "") {
 
 // Country Information Tab Data
 const countryData = {
-    canada: {
-        title: "Canada",
-        bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuA2JCVLRnwP5HUQobX9G9U_V6BPPERcq2EWQBvEXd2voz-J9DkrqV8cBOFEd8-wHV2DUux7BH2VJyOiKw1MqDomgcsZJL7JwACyYyuJG-r5UDMVHRFFsjvk5MJpKIW2F-s_SkZe2qMDoIRZi68ZBubc1mv6ep1Z6kAshW2JeeAxfVfq-ZBk8TGHA8cPYINBiw55UrTDVn2iAfwwCavF0yZkMkCxWrMVp3u6WwOV2AbwXB6odUsKdS_Y",
-        universities: "University of Toronto, McGill, UBC",
-        successRate: "85% — Highest in region",
-        postStudyWork: "Up to 3 Years PGWP",
-        stamp: "APPROVED IND → CA"
+    georgia: {
+        title: "Georgia",
+        bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBRQzbTktOBQ9DJxUh3e6H40cBO7QKQXLMuS_ZjXmAKNPCVvysq8xFeBEtwyu6uAK2RRDrSGTPGt25ullPS8114_aX8S1Z13cNjUgMUJ4l5OnXabO3IJLwKmV5dfbrMV8vA6FToeMinQPv4hAhOxw7Sl2WY5VjxMRSetHLsyjDUVv3w-O5JwMP3ZcGpv0l0qARMvVhVnQDR8k4G8Jt77QHr0Q5a_FEg63KyIV9vAUm7r2jEHO6jJvi4",
+        universities: "Tbilisi State Medical University, Geomedi University",
+        successRate: "98.2% — WHO & NMC Approved",
+        postStudyWork: "European Internship Pathways",
+        stamp: "APPROVED IND → GE"
     },
     uk: {
         title: "United Kingdom",
         bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC8ym4f-tjbZF431A1zOsp1Uzh7j6JD-koHwFuISEXqcbidzL_dIET1caQZfmd_RnwibeOCehqrEG5JZmmsXAb7_yP7dy4ixpEy_Bj2bkDzNc0de2dVxN3EDm8VWRLSjXxzATYn4w2FS0ENqDwgyKJA8lg39-KjGK0KrakhpunGpUY0LIKxHBfXx5mrdZBxlFYH-_YP1RHYIOLa9uN8qWfwqwHe6Hi93F2NV_cEkbKh2PI3lsIJyU6i",
-        universities: "King's College, Greenwich, Hull",
-        successRate: "95% — Exceptional processing",
+        universities: "Greenwich University, Hull University, King's College London",
+        successRate: "95.4% — Nursing Placements Mapped",
         postStudyWork: "2 Years Graduate Route",
         stamp: "APPROVED IND → UK"
     },
-    germany: {
-        title: "Germany",
-        bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuAtglLFeLlI8R4694XT9PofTbg7cs__asjUXSU-9vz-tdRraZ_W2aFM6EJ2rkTb4vg9ima75OyDJBAagjEssiu5p9ivhSi_69M3SQmTuWIEi-PZpdYUlQk_ZDY9q4vYFMqAUCjRSFPQ3eI3wAQx3IlB3vDnHK4CrlqgzdFo0KcypwpxP4CjCVX-8gfLpEPVFgjx16Cy3A3O571SQiAJt1Z7WHgOuvFxTstIChoMWWYj0lWE47tixqaj",
-        universities: "TU Munich, RWTH Aachen, LMU Berlin",
-        successRate: "98% — Precision filings",
-        postStudyWork: "18 Months Job Seeker",
-        stamp: "APPROVED IND → DE"
+    ireland: {
+        title: "Ireland",
+        bgImage: "https://images.unsplash.com/photo-1549918830-11ec228633c9?auto=format&fit=crop&w=600&q=80",
+        universities: "Trinity College Dublin, University College Dublin, RCSI",
+        successRate: "97.2% — Direct Visa Issuance",
+        postStudyWork: "2 Years Graduate Work Visa",
+        stamp: "APPROVED IND → IE"
     },
-    georgia: {
-        title: "Georgia",
-        bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBRQzbTktOBQ9DJxUh3e6H40cBO7QKQXLMuS_ZjXmAKNPCVvysq8xFeBEtwyu6uAK2RRDrSGTPGt25ullPS8114_aX8S1Z13cNjUgMUJ4l5OnXabO3IJLwKmV5dfbrMV8vA6FToeMinQPv4hAhOxw7Sl2WY5VjxMRSetHLsyjDUVv3w-O5JwMP3ZcGpv0l0qARMvVhVnQDR8k4G8Jt77QHr0Q5a_FEg63KyIV9vAUm7r2jEHO6jJvi4",
-        universities: "Tbilisi State Medical University",
-        successRate: "98.2% — WHO & NMC Approved",
-        postStudyWork: "European Internship Pathways",
-        stamp: "APPROVED IND → GE"
+    poland: {
+        title: "Poland",
+        bgImage: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80",
+        universities: "Medical University of Gdansk, Wroclaw Medical University",
+        successRate: "96.8% — NMC Approved MBBS Pathways",
+        postStudyWork: "1-Year Stayback / Schengen Access",
+        stamp: "APPROVED IND → PL"
     }
 };
 
